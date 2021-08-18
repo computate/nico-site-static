@@ -1,0 +1,759 @@
+
+{{#partial "htmUserKeys"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			if("Page".equals({{classApiMethodMethod}})) {
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-red">
+							<label>users</label>
+						</div>
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span.a("class", "varSiteEnrollment", pk, "UserKeys ").f()
+.sx(strUserKeys()).g("span");
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+{{/partial}}
+
+{{#partial "inputUserKeys"}}
+{{/partial}}
+
+{{#partial "htmPetKeys"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SiteEnrollmentPetKeys">
+					<div class="w3-card ">
+						<div class="w3-cell-row ">
+							<a href="/pet?fq=enrollmentKeys:", pk" class="w3-cell w3-btn w3-center h4 w3-block h4 w3-pale-green w3-hover-pale-green ">
+								<i class="fas fa-dog "></i>
+								sx(pets);
+							</a>
+						</div>
+						<div class="w3-cell-row ">
+							<h5 class="w3-cell ">
+								sx(relate  to this enrollment);
+							</h5>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								<div class="w3-cell-row ">
+
+								{{#block "inputPetKeys}}{{/block}}
+								</div>
+							</div>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell w3-left-align w3-cell-top ">
+								{ <ul class"w3-ul w3-hoverable " id="listSiteEnrollmentPetKeys_", {{classApiMethodMethod}}">
+								} g("ul");
+								{
+
+									if("Page".equals({{classApiMethodMethod}})) {
+										<div class="w3-cell-row ">
+											<button
+
+												.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+												.a("id", {{classApiMethodMethod}}, "_petKeys_add")
+												.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postSitePetVals({ enrollmentKeys: [ \"", pk, "\" ] }
+, function() {}, function() { addError($('#", {{classApiMethodMethod}}, "petKeys')); });")
+												.f().sx("add a pet")
+											.g("button");
+										</div>
+									}
+
+								}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetKeys"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<i
+.a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
+			if("PUTCopy".equals({{classApiMethodMethod}})) {
+				<div>
+					<input
+						type="checkbox"
+						id="{{classApiMethodMethod}}_petKeys_clear"
+						class="petKeys_clear "
+						>
+					<label for="{{classApiMethodMethod}}_petKeys_clear>clear</label>
+				</div>
+			}
+			<input
+					type="text"
+					placeholderpets
+				.a("class", "valueObjectSuggest suggestPetKeys w3-input w3-border w3-cell w3-cell-middle ")
+				.a("name", "setPetKeys")
+				.a("id", {{classApiMethodMethod}}, "_petKeys")
+				.a("autocomplete", "off");
+				a("oninput", "suggestSiteEnrollmentPetKeys($(this).val() ? [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ] : [", pk == null ? "" : "{'name':'fq','value':'enrollmentKeys:" + pk + "'}", "], $('#listSiteEnrollmentPetKeys_", {{classApiMethodMethod}}, "'), ", pk, "); ");
+
+				fg();
+
+		} else {
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmlScriptsSiteEnrollmentGenPage"}}
+		<script src="staticBaseUrl, "/js/enUS/SiteEnrollmentPage.js"></script>
+		<script src="staticBaseUrl, "/js/enUS/PetPage.js"></script>
+{{/partial}}
+
+{{#partial "htmlScriptSiteEnrollmentGenPage"}}
+			$(document).ready(function() {
+				document.onkeydown = function(evt) {
+					evt = evt || window.event;
+					var isEscape = false;
+					if ('key' in evt) {
+						isEscape = (evt.key === 'Escape' || evt.key === 'Esc');
+					} else {
+						isEscape = (evt.keyCode === 27);
+					}
+					if (isEscape) {
+						$('.w3-modal:visible').hide();
+					}
+				};
+				window.eventBus = new EventBus('/eventbus');
+				var pk = ", Optional.ofNullable(siteRequest_.getRequestPk()).map(l -> l.toString()).orElse("null"), ";
+				if(pk != null) {
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+			tl(2, "suggestSiteEnrollmentPetKeys([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listSiteEnrollmentPetKeys_Page'), pk, true); ");
+		} else {
+			tl(2, "suggestSiteEnrollmentPetKeys([{'name':'fq','value':'enrollmentKeys:' + pk}], $('#listSiteEnrollmentPetKeys_Page'), pk, false); ");
+		}
+				}
+				websocketSiteEnrollment(websocketSiteEnrollmentInner);
+			});
+{{/partial}}
+
+{{#partial "htmlFormPageSiteEnrollment"}}
+		<div class="w3-cell-row ">
+			o.htmPk("Page");
+			o.htmCreated("Page");
+			o.htmModified("Page");
+			o.htmObjectId("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("Page");
+			o.htmDeleted("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetKeys("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("Page");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPOSTSiteEnrollment"}}
+		<div class="w3-cell-row ">
+			o.htmPk("POST");
+			o.htmCreated("POST");
+			o.htmModified("POST");
+			o.htmObjectId("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("POST");
+			o.htmDeleted("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetKeys("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("POST");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPUTImportSiteEnrollment"}}
+		{ e("div class=\"w3-cell-row \">")			<textarea
+				 class=""PUTImport_list w3-input w3-border "
+				 style=""height: 400px; "
+				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
+				;
+				f();
+			g("textarea");
+		} g("div");
+{{/partial}}
+
+{{#partial "htmlFormPUTMergeSiteEnrollment"}}
+		{ e("div class=\"w3-cell-row \">")			<textarea
+				 class=""PUTMerge_list w3-input w3-border "
+				 style=""height: 400px; "
+				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
+				;
+				f();
+			g("textarea");
+		} g("div");
+{{/partial}}
+
+{{#partial "htmlFormPUTCopySiteEnrollment"}}
+		<div class="w3-cell-row ">
+			o.htmCreated("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("PUTCopy");
+			o.htmDeleted("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetKeys("PUTCopy");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPATCHSiteEnrollment"}}
+		<div class="w3-cell-row ">
+			o.htmCreated("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("PATCH");
+			o.htmDeleted("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetKeys("PATCH");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormSearchSiteEnrollment"}}
+		<div class="w3-cell-row ">
+			o.htmPk("Search");
+			o.htmCreated("Search");
+			o.htmModified("Search");
+			o.htmObjectId("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("Search");
+			o.htmDeleted("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetKeys("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmInheritPk("Search");
+			o.htmUserId("Search");
+			o.htmUserKey("Search");
+			o.htmObjectTitle("Search");
+		</div>
+{{/partial}}
+
+{{#partial "htmlBodySiteEnrollmentGenPage"}}
+
+		ServiceRequest serviceRequest = siteRequest_.getServiceRequest();
+		JsonObject params = serviceRequest.getParams();
+		if(listSiteEnrollment_ == null || listSiteEnrollment_.size() == 0) {
+
+			{ e("h1>")				{ e("a").a("href", "/api/enrollment").a("class", "w3-bar-item w3-btn w3-center w3-block w3-red w3-hover-red >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f().sx("enrollments").g("span");
+				} g("a");
+			} g("h1");
+			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			{ e("h2>")				{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-red >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f().sx("no enrollment found").g("span");
+				} g("span");
+			} g("h2");
+		} else if(listSiteEnrollment_ != null && listSiteEnrollment_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
+			SiteEnrollment o = listSiteEnrollment_.get(0);
+			siteRequest_.setRequestPk(o.getPk());
+			if(StringUtils.isNotEmpty(pageH1)) {
+				{ e("h1>")					{ e("a").a("href", "/api/enrollment").a("class", "w3-bar-item w3-btn w3-center w3-block w3-red w3-hover-red >")						if(contextIconCssClasses != null)
+							<i class="contextIconCssClasses + " site-menu-icon "></i>
+						e("span class=\" \"").f()pageH1.g("span");
+					} g("a");
+				} g("h1");
+			}
+			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			if(StringUtils.isNotEmpty(pageH2)) {
+				{ e("h2>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-red >")						e("span class=\" \"").f()pageH2.g("span");
+					} g("span");
+				} g("h2");
+			}
+			if(StringUtils.isNotEmpty(pageH3)) {
+				{ e("h3>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-red >")						e("span class=\" \"").f()pageH3.g("span");
+					} g("span");
+				} g("h3");
+			}
+		} else {
+
+			{ e("h1>")				{ e("a").a("href", "/api/enrollment").a("class", "w3-bar-item w3-btn w3-center w3-block w3-red w3-hover-red >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f()pageH1.g("span");
+				} g("a");
+			} g("h1");
+			{ e("div class=\"\">")				{ e("div>")					JsonObject queryParams = Optional.ofNullable(serviceRequest).map(ServiceRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
+					Long num = listSiteEnrollment_.getQueryResponse().getResults().getNumFound();
+					String q = "*:*";
+					String query1 = "objectText";
+					String query2 = "";
+					String query = "*:*";
+					for(String paramName : queryParams.fieldNames()) {
+						String entityVar = null;
+						String valueIndexed = null;
+						Object paramObjectValues = queryParams.getValue(paramName);
+						JsonArray paramObjects = paramObjectValues instanceof JsonArray ? (JsonArray)paramObjectValues : new JsonArray().add(paramObjectValues);
+
+						try {
+							for(Object paramObject : paramObjects) {
+								switch(paramName) {
+									case "q":
+										q = (String)paramObject;
+										entityVar = StringUtils.trim(StringUtils.substringBefore((String)paramObject, ":"));
+										valueIndexed = URLDecoder.decode(StringUtils.trim(StringUtils.substringAfter((String)paramObject, ":")), "UTF-8");
+										query1 = entityVar.equals("*") ? query1 : entityVar;
+										query2 = valueIndexed;
+										query = query1 + ":" + query2;
+								}
+							}
+						} catch(Exception e) {
+							ExceptionUtils.rethrow(e);
+						}
+					}
+
+					Integer rows1 = Optional.ofNullable(listSiteEnrollment_).map(l -> l.getRows()).orElse(10);
+					Integer start1 = Optional.ofNullable(listSiteEnrollment_).map(l -> l.getStart()).orElse(1);
+					Integer start2 = start1 - rows1;
+					Integer start3 = start1 + rows1;
+					Integer rows2 = rows1 / 2;
+					Integer rows3 = rows1 * 2;
+					start2 = start2 < 0 ? 0 : start2;
+					StringBuilder fqs = new StringBuilder();
+					for(String fq : Optional.ofNullable(listSiteEnrollment_).map(l -> l.getFilterQueries()).orElse(new String[0])) {
+						if(!StringUtils.contains(fq, "(")) {
+							String fq1 = StringUtils.substringBefore(fq, "_");
+							String fq2 = StringUtils.substringAfter(fq, ":");
+							if(!StringUtils.startsWithAny(fq, "classCanonicalNames_", "archived_", "deleted_", "sessionId", "userKeys"))
+								fqs.append("&fq=").append(fq1).append(":").append(fq2);
+						}
+					}
+					StringBuilder sorts = new StringBuilder();
+					for(SortClause sort : Optional.ofNullable(listSiteEnrollment_).map(l -> l.getSorts()).orElse(Arrays.asList())) {
+						sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
+					}
+
+					if(start1 == 0) {
+						e("i class=\"fas fa-arrow-square-left w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/enrollment?q=", query, fqs, sorts, "&start=", start2, "&rows=", rows1)>;
+							e("i class=\"fas fa-arrow-square-left \"").f().g("i");
+						} g("a");
+					}
+
+					if(rows1 <= 1) {
+						e("i class=\"fas fa-minus-square w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/enrollment?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2)>;
+							e("i class=\"fas fa-minus-square \"").f().g("i");
+						} g("a");
+					}
+
+					<a.a("href", "/api/enrollment?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3)>;
+						e("i class=\"fas fa-plus-square \"").f().g("i");
+					} g("a");
+
+					if(start3 >= num) {
+						e("i class=\"fas fa-arrow-square-right w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/enrollment?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1)>;
+							e("i class=\"fas fa-arrow-square-right \"").f().g("i");
+						} g("a");
+					}
+						<span>(start1 + 1), " - ", (start1 + rows1), " of ", num</span>
+				} g("div");
+				table1SiteEnrollmentGenPage();
+			} g("div");
+		}
+
+		if(listSiteEnrollment_ != null && listSiteEnrollment_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
+			SiteEnrollment o = listSiteEnrollment_.first();
+
+			{ e("div class=\"\">")
+				if(o.getPk() != null) {
+					{ e("form").a("action", "").a("id", "SiteEnrollmentForm style=\"display: inline-block; width: 100%; \" onsubmit=\"event.preventDefault(); return false; \">")						e("input")
+						.a("name", "pk")
+						.a("class", "valuePk")
+						.a("type", "hidden")
+						.a("value", o.getPk())
+						.fg();
+						e("input")
+						.a("name", "focusId")
+						.a("type", "hidden")
+						.fg();
+					} g("form");
+					htmlFormPageSiteEnrollment(o);
+				}
+
+			} g("div");
+
+		}
+		htmlBodyFormsSiteEnrollmentGenPage();
+	}
+
+{{#partial "table1SiteEnrollmentGenPage"}}
+		{ e("table class=\"w3-table w3-bordered w3-striped w3-border w3-hoverable \">")			table2SiteEnrollmentGenPage();
+		} g("table");
+	}
+
+{{#partial "table2SiteEnrollmentGenPage"}}
+		thead1SiteEnrollmentGenPage();
+		tbody1SiteEnrollmentGenPage();
+		tfoot1SiteEnrollmentGenPage();
+	}
+
+{{#partial "thead1SiteEnrollmentGenPage"}}
+		{ e("thead").a("class", "w3-red w3-hover-red >")			thead2SiteEnrollmentGenPage();
+		} g("thead");
+	}
+
+{{#partial "thead2SiteEnrollmentGenPage"}}
+			{ e("tr>")			if(getColumnCreated()) {
+				<th>"created"</th>
+			}
+			if(getColumnObjectTitle()) {
+				<th>""</th>
+			}
+			} g("tr");
+	}
+
+{{#partial "tbody1SiteEnrollmentGenPage"}}
+		{ e("tbody>")			tbody2SiteEnrollmentGenPage();
+		} g("tbody");
+	}
+
+{{#partial "tbody2SiteEnrollmentGenPage"}}
+		Map<String, Map<String, List<String>>> highlighting = listSiteEnrollment_.getQueryResponse().getHighlighting();
+		for(int i = 0; i < listSiteEnrollment_.size(); i++) {
+			SiteEnrollment o = listSiteEnrollment_.getList().get(i);
+			Map<String, List<String>> highlights = highlighting == null ? null : highlighting.get(o.getId());
+			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
+			String uri = "/api/enrollment/" + o.getPk();
+			<tr>;
+				if(getColumnCreated()) {
+					<td>;
+						<a href="{{uri}}")>
+							<span>;
+								sx(o.strCreated());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
+				if(getColumnObjectTitle()) {
+					<td>;
+						<a href="{{uri}}")>
+							<i
+.a("class", "fad fa-clipboard-list ").f().g("i");
+							<span>;
+								sx(o.strObjectTitle());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
+			} g("tr");
+		}
+	}
+
+{{#partial "tfoot1SiteEnrollmentGenPage"}}
+		{ e("tfoot").a("class", "w3-red w3-hover-red >")			tfoot2SiteEnrollmentGenPage();
+		} g("tfoot");
+	}
+
+{{#partial "tfoot2SiteEnrollmentGenPage"}}
+		{ e("tr>")			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listSiteEnrollment_.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
+			if(getColumnCreated()) {
+				<td>;
+				g("td");
+			}
+			if(getColumnObjectTitle()) {
+				<td>;
+				g("td");
+			}
+		} g("tr");
+	}
+
+	public Boolean getColumnCreated() {
+		return true;
+	}
+
+	public Boolean getColumnObjectTitle() {
+		return true;
+	}
+
+{{#partial "htmlBodyFormsSiteEnrollmentGenPage"}}
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+
+			if(listSiteEnrollment_ != null && listSiteEnrollment_.size() == 1) {
+				{ e("button")
+					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+						.a("id", "refreshThisSiteEnrollmentGenPage")
+						 onclick=""patchSiteEnrollmentVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisSiteEnrollmentGenPage')); }, function() { addError($('#refreshThisSiteEnrollmentGenPage')); }); return false; ">						e("i class=\"fas fa-sync-alt \"").f().g("i");
+					sx("refresh this enrollment");
+				} g("button");
+			}
+		}
+		if(
+				siteRequest_.getUserResourceRoles().contains("SiteAdmin")
+				|| siteRequest_.getUserRealmRoles().contains("SiteAdmin")
+				) {
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+				.a("onclick", "$('#putimportSiteEnrollmentModal').show(); ")
+				.f();
+				e("i class=\"fas fa-file-import \"").f().g("i");
+				sx("Import enrollments");
+			} g("button");
+			{ e("div").a("id", "putimportSiteEnrollmentModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-red >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putimportSiteEnrollmentModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Import enrollments").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putimportSiteEnrollmentFormValues").f();
+							SiteEnrollment o = new SiteEnrollment();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putimportSiteEnrollmentForm>")								htmlFormPUTImportSiteEnrollment(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-red ")
+								 onclick=""putimportSiteEnrollment($('#putimportSiteEnrollmentForm')); "
+								.f().sx("Import enrollments")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+				.a("onclick", "$('#putmergeSiteEnrollmentModal').show(); ")
+				.f();
+				e("i class=\"fas fa-code-merge \"").f().g("i");
+				sx("Merge enrollments");
+			} g("button");
+			{ e("div").a("id", "putmergeSiteEnrollmentModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-red >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putmergeSiteEnrollmentModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Merge enrollments").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putmergeSiteEnrollmentFormValues").f();
+							SiteEnrollment o = new SiteEnrollment();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putmergeSiteEnrollmentForm>")								htmlFormPUTMergeSiteEnrollment(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-red ")
+								 onclick=""putmergeSiteEnrollment($('#putmergeSiteEnrollmentForm')); "
+								.f().sx("Merge enrollments")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+				.a("onclick", "$('#putcopySiteEnrollmentModal').show(); ")
+				.f();
+				e("i class=\"fas fa-copy \"").f().g("i");
+				sx("Duplicate enrollments");
+			} g("button");
+			{ e("div").a("id", "putcopySiteEnrollmentModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-red >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putcopySiteEnrollmentModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Duplicate enrollments").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putcopySiteEnrollmentFormValues").f();
+							SiteEnrollment o = new SiteEnrollment();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putcopySiteEnrollmentForm>")								htmlFormPUTCopySiteEnrollment(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-red ")
+								 onclick=""putcopySiteEnrollment($('#putcopySiteEnrollmentForm'), ", siteEnrollment_ == null ? "null" : siteEnrollment_.getPk(), "; ")
+								.f().sx("Duplicate enrollments")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+				.a("onclick", "$('#postSiteEnrollmentModal').show(); ")
+				.f();
+				e("i class=\"fas fa-file-plus \"").f().g("i");
+				sx("Create an enrollment");
+			} g("button");
+			{ e("div").a("id", "postSiteEnrollmentModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-red >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#postSiteEnrollmentModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Create an enrollment").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "postSiteEnrollmentFormValues").f();
+							SiteEnrollment o = new SiteEnrollment();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form POST
+							{ e("div").a("id", "postSiteEnrollmentForm>")								htmlFormPOSTSiteEnrollment(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-red ")
+								 onclick=""postSiteEnrollment($('#postSiteEnrollmentForm')); "
+								.f().sx("Create an enrollment")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+				.a("onclick", "$('#patchSiteEnrollmentModal').show(); ")
+				.f();
+				e("i class=\"fas fa-edit \"").f().g("i");
+				sx("Modify enrollments");
+			} g("button");
+			{ e("div").a("id", "patchSiteEnrollmentModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-red >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#patchSiteEnrollmentModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Modify enrollments").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "patchSiteEnrollmentFormValues").f();
+							SiteEnrollment o = new SiteEnrollment();
+							o.setSiteRequest_(siteRequest_);
+
+							htmlFormPATCHSiteEnrollment(o);
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-red ")
+								 onclick=""patchSiteEnrollment(null, $('#patchSiteEnrollmentFormValues'), ", Optional.ofNullable(siteEnrollment_).map(SiteEnrollment::getPk).map(a -> a.toString()).orElse("null", ", function() {}, function() {}); ")
+								.f().sx("Modify enrollments")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+		}
+		htmlSuggestedSiteEnrollmentGenPage(this, null, listSiteEnrollment_);
+	
+
+	/**
+	**/
+	public static void htmlSuggestedSiteEnrollmentGenPage(String id, SearchList<SiteEnrollment> listSiteEnrollment_) {
+		SiteRequestEnUS siteRequest_ = p.getSiteRequest_();
+		try {
+			ServiceRequest serviceRequest = siteRequest_.getServiceRequest();
+			JsonObject queryParams = Optional.ofNullable(serviceRequest).map(ServiceRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
+			String q = "*:*";
+			String query1 = "objectText";
+			String query2 = "";
+			for(String paramName : queryParams.fieldNames()) {
+				String entityVar = null;
+				String valueIndexed = null;
+				Object paramObjectValues = queryParams.getValue(paramName);
+				JsonArray paramObjects = paramObjectValues instanceof JsonArray ? (JsonArray)paramObjectValues : new JsonArray().add(paramObjectValues);
+
+				try {
+					for(Object paramObject : paramObjects) {
+						switch(paramName) {
+							case "q":
+								q = (String)paramObject;
+								entityVar = StringUtils.trim(StringUtils.substringBefore((String)paramObject, ":"));
+								valueIndexed = URLDecoder.decode(StringUtils.trim(StringUtils.substringAfter((String)paramObject, ":")), "UTF-8");
+								query1 = entityVar.equals("*") ? query1 : entityVar;
+								query2 = valueIndexed.equals("*") ? "" : valueIndexed;
+						}
+					}
+				} catch(Exception e) {
+					ExceptionUtils.rethrow(e);
+				}
+			}
+
+			Integer rows1 = Optional.ofNullable(listSiteEnrollment_).map(l -> l.getRows()).orElse(10);
+			Integer start1 = Optional.ofNullable(listSiteEnrollment_).map(l -> l.getStart()).orElse(1);
+			Integer start2 = start1 - rows1;
+			Integer start3 = start1 + rows1;
+			Integer rows2 = rows1 / 2;
+			Integer rows3 = rows1 * 2;
+			start2 = start2 < 0 ? 0 : start2;
+			StringBuilder fqs = new StringBuilder();
+			for(String fq : Optional.ofNullable(listSiteEnrollment_).map(l -> l.getFilterQueries()).orElse(new String[0])) {
+				if(!StringUtils.contains(fq, "(")) {
+					String fq1 = StringUtils.substringBefore(fq, "_");
+					String fq2 = StringUtils.substringAfter(fq, ":");
+					if(!StringUtils.startsWithAny(fq, "classCanonicalNames_", "archived_", "deleted_", "sessionId", "userKeys"))
+						fqs.append("&fq=").append(fq1).append(":").append(fq2);
+				}
+			}
+			StringBuilder sorts = new StringBuilder();
+			for(SortClause sort : Optional.ofNullable(listSiteEnrollment_).map(l -> l.getSorts()).orElse(Arrays.asList())) {
+				sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
+			}
+
+			if(
+					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), SiteEnrollmentGenPage.ROLES)
+					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), SiteEnrollmentGenPage.ROLES)
+					) {
+					{ p.e("div class=\"\">")						{ p.e("button").a("id", "refreshAllSiteEnrollmentGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ") onclick=""patchSiteEnrollmentVals([], {}, function() { addGlow($('#refreshAllSiteEnrollmentGenPage", id, "')); }, function() { addError($('#refreshAllSiteEnrollmentGenPage", id, "')); }); ".f();
+							p.e("i class=\"fas fa-sync-alt \"").f().g("i");
+							p.sx("refresh all the enrollments");
+						} p.g("button");
+					} p.g("div");
+			}
+			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell \">")					{ p.e("span>")						p.sx("search enrollments: ");
+					} p.g("span");
+				} p.g("div");
+			} p.g("div");
+			{ p.e("div class=\"w3-bar \">")
+				p.e("input")
+					.a("type", "text")
+					.a("class", "suggestSiteEnrollment w3-input w3-border w3-bar-item ")
+					.a("name", "suggestSiteEnrollment")
+					.a("id", "suggestSiteEnrollment", id)
+					.a("autocomplete", "off")
+					 oninput=""suggestSiteEnrollmentObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListSiteEnrollment", id, "'), ", p.getSiteRequest_().getRequestPk(), "; ")
+					 onkeyup=""if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/api/enrollment?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"; 
+				if(listSiteEnrollment_ != null)
+					p.a("value", query2);
+				p.fg();
+				{ p.e("button")
+					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-red ")
+					 onclick=""window.location.href = '/api/enrollment?q=", query1, ":' + encodeURIComponent(this.previousElementSibling.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; " 
+					.f();
+					p.e("i class=\"fas fa-search \"").f().g("i");
+				} p.g("button");
+
+			} p.g("div");
+			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell w3-left-align w3-cell-top \">")					{ p.e("ul class=\"w3-ul w3-hoverable \"").a("id", "suggestListSiteEnrollment", id)>					} p.g("ul");
+				} p.g("div");
+			} p.g("div");
+			{ p.e("div class=\"\">")				{ p.e("a").a("href", "/api/enrollment").a("class", ">")					p.e("i").a("class", "fad fa-clipboard-list ").f().g("i");
+					p.sx("see all the enrollments");
+				} p.g("a");
+			} p.g("div");
+		} catch(Exception e) {
+			ExceptionUtils.rethrow(e);
+		}
+	}
+

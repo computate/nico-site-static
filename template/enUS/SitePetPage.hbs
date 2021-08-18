@@ -1,0 +1,1275 @@
+
+{{#partial "htmUserKeys"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			if("Page".equals({{classApiMethodMethod}})) {
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label>users</label>
+						</div>
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span.a("class", "varSitePet", pk, "UserKeys ").f()
+.sx(strUserKeys()).g("span");
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+{{/partial}}
+
+{{#partial "inputUserKeys"}}
+{{/partial}}
+
+{{#partial "htmEnrollmentKeys"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetEnrollmentKeys">
+					<div class="w3-card ">
+						<div class="w3-cell-row ">
+							<a href="/enrollment?fq=petKeys:", pk" class="w3-cell w3-btn w3-center h4 w3-block h4 w3-red w3-hover-red ">
+								<i class="fad fa-clipboard-list "></i>
+								sx(enrollments);
+							</a>
+						</div>
+						<div class="w3-cell-row ">
+							<h5 class="w3-cell ">
+								sx(relate  to this pet);
+							</h5>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								<div class="w3-cell-row ">
+
+								{{#block "inputEnrollmentKeys}}{{/block}}
+								</div>
+							</div>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell w3-left-align w3-cell-top ">
+								{ <ul class"w3-ul w3-hoverable " id="listSitePetEnrollmentKeys_", {{classApiMethodMethod}}">
+								} g("ul");
+								{
+
+									if("Page".equals({{classApiMethodMethod}})) {
+										<div class="w3-cell-row ">
+											<button
+
+												.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
+												.a("id", {{classApiMethodMethod}}, "_enrollmentKeys_add")
+												.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postSiteEnrollmentVals({ petKeys: [ \"", pk, "\" ] }
+, function() {}, function() { addError($('#", {{classApiMethodMethod}}, "enrollmentKeys')); });")
+												.f().sx("add an enrollment")
+											.g("button");
+										</div>
+									}
+
+								}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputEnrollmentKeys"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<i
+.a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
+			if("PUTCopy".equals({{classApiMethodMethod}})) {
+				<div>
+					<input
+						type="checkbox"
+						id="{{classApiMethodMethod}}_enrollmentKeys_clear"
+						class="enrollmentKeys_clear "
+						>
+					<label for="{{classApiMethodMethod}}_enrollmentKeys_clear>clear</label>
+				</div>
+			}
+			<input
+					type="text"
+					placeholderenrollments
+				.a("class", "valueObjectSuggest suggestEnrollmentKeys w3-input w3-border w3-cell w3-cell-middle ")
+				.a("name", "setEnrollmentKeys")
+				.a("id", {{classApiMethodMethod}}, "_enrollmentKeys")
+				.a("autocomplete", "off");
+				a("oninput", "suggestSitePetEnrollmentKeys($(this).val() ? [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ] : [", pk == null ? "" : "{'name':'fq','value':'petKeys:" + pk + "'}", "], $('#listSitePetEnrollmentKeys_", {{classApiMethodMethod}}, "'), ", pk, "); ");
+
+				fg();
+
+		} else {
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetName"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetName">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petName">name of pet:</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetName}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petName')); $('#", {{classApiMethodMethod}}, "_petName').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetName', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petName')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petName')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetName"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<input
+				.a("type", "text")
+				.a("placeholder", "name of pet:")
+				.a("id", {{classApiMethodMethod}}, "_petName");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetName classSitePet inputSitePet", pk, "PetName w3-input w3-border ");
+					a("name", "setPetName");
+				} else {
+					a("class", "valuePetName w3-input w3-border classSitePet inputSitePet", pk, "PetName w3-input w3-border ");
+					a("name", "petName");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetName', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petName')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petName')); }); ");
+				}
+				a("value", strPetName())
+			.fg();
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetName ").f().sx(htmPetName()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetFoodAmount"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetFoodAmount">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petFoodAmount">How much does your pet eat?</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetFoodAmount}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petFoodAmount')); $('#", {{classApiMethodMethod}}, "_petFoodAmount').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetFoodAmount', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetFoodAmount"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<textarea
+				.a("placeholder", "How much does your pet eat?")
+				.a("id", {{classApiMethodMethod}}, "_petFoodAmount");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetFoodAmount classSitePet inputSitePet", pk, "PetFoodAmount w3-input w3-border ");
+					a("name", "setPetFoodAmount");
+				} else {
+					a("class", "valuePetFoodAmount w3-input w3-border classSitePet inputSitePet", pk, "PetFoodAmount w3-input w3-border ");
+					a("name", "petFoodAmount");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFoodAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }); ");
+				}
+			f().sx(strPetFoodAmount()).g("textarea");
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetFoodAmount ").f().sx(htmPetFoodAmount()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetFood"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetFood">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petFood">What does your pet eat?</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetFood}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petFood')); $('#", {{classApiMethodMethod}}, "_petFood').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetFood', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petFood')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFood')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetFood"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<textarea
+				.a("placeholder", "What does your pet eat?")
+				.a("id", {{classApiMethodMethod}}, "_petFood");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetFood classSitePet inputSitePet", pk, "PetFood w3-input w3-border ");
+					a("name", "setPetFood");
+				} else {
+					a("class", "valuePetFood w3-input w3-border classSitePet inputSitePet", pk, "PetFood w3-input w3-border ");
+					a("name", "petFood");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFood', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFood')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFood')); }); ");
+				}
+			f().sx(strPetFood()).g("textarea");
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetFood ").f().sx(htmPetFood()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetSick"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetSick">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petSick">Is your pet sick, or need medication?</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetSick}}{{/block}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetSick"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			if("Page".equals({{classApiMethodMethod}})) {
+				<input
+					.a("type", "checkbox")
+					.a("id", {{classApiMethodMethod}}, "_petSick")
+					.a("value", "true");
+			} else {
+				<select
+					.a("id", {{classApiMethodMethod}}, "_petSick");
+			}
+			if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+				a("class", "setPetSick classSitePet inputSitePet", pk, "PetSick w3-input w3-border ");
+				a("name", "setPetSick");
+			} else {
+				a("class", "valuePetSick classSitePet inputSitePet", pk, "PetSick w3-input w3-border ");
+				a("name", "petSick");
+			}
+			if("Page".equals({{classApiMethodMethod}})) {
+				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetSick', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_petSick')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petSick')); }); ");
+			}
+			if("Page".equals({{classApiMethodMethod}})) {
+				if(getPetSick() != null && getPetSick())
+					a("checked", "checked");
+				fg();
+			} else {
+				f();
+				<option.a("value", "").a("selected", "selected").f().g("option");
+				<option.a("value", "true").f().sx("true").g("option");
+				<option.a("value", "false").f().sx("false").g("option");
+				g("select");
+			}
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetSick ").f().sx(htmPetSick()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetMedNote"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetMedNote">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petMedNote">Additional notes for medication:</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetMedNote}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petMedNote')); $('#", {{classApiMethodMethod}}, "_petMedNote').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetMedNote', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petMedNote')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petMedNote')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetMedNote"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<textarea
+				.a("placeholder", "Additional notes for medication:")
+				.a("id", {{classApiMethodMethod}}, "_petMedNote");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetMedNote classSitePet inputSitePet", pk, "PetMedNote w3-input w3-border ");
+					a("name", "setPetMedNote");
+				} else {
+					a("class", "valuePetMedNote w3-input w3-border classSitePet inputSitePet", pk, "PetMedNote w3-input w3-border ");
+					a("name", "petMedNote");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetMedNote', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petMedNote')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petMedNote')); }); ");
+				}
+			f().sx(strPetMedNote()).g("textarea");
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetMedNote ").f().sx(htmPetMedNote()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetTrouble"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetTrouble">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petTrouble">What would get your pet in trouble?</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetTrouble}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petTrouble')); $('#", {{classApiMethodMethod}}, "_petTrouble').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetTrouble', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petTrouble')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petTrouble')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetTrouble"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<textarea
+				.a("placeholder", "What would get your pet in trouble?")
+				.a("id", {{classApiMethodMethod}}, "_petTrouble");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetTrouble classSitePet inputSitePet", pk, "PetTrouble w3-input w3-border ");
+					a("name", "setPetTrouble");
+				} else {
+					a("class", "valuePetTrouble w3-input w3-border classSitePet inputSitePet", pk, "PetTrouble w3-input w3-border ");
+					a("name", "petTrouble");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetTrouble', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petTrouble')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petTrouble')); }); ");
+				}
+			f().sx(strPetTrouble()).g("textarea");
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetTrouble ").f().sx(htmPetTrouble()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmUpdate"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetUpdate">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_update">Do you want updates, if you do how many?</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputUpdate}}{{/block}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputUpdate"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			if("Page".equals({{classApiMethodMethod}})) {
+				<input
+					.a("type", "checkbox")
+					.a("id", {{classApiMethodMethod}}, "_update")
+					.a("value", "true");
+			} else {
+				<select
+					.a("id", {{classApiMethodMethod}}, "_update");
+			}
+			if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+				a("class", "setUpdate classSitePet inputSitePet", pk, "Update w3-input w3-border ");
+				a("name", "setUpdate");
+			} else {
+				a("class", "valueUpdate classSitePet inputSitePet", pk, "Update w3-input w3-border ");
+				a("name", "update");
+			}
+			if("Page".equals({{classApiMethodMethod}})) {
+				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setUpdate', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_update')); }, function() { addError($('#", {{classApiMethodMethod}}, "_update')); }); ");
+			}
+			if("Page".equals({{classApiMethodMethod}})) {
+				if(getUpdate() != null && getUpdate())
+					a("checked", "checked");
+				fg();
+			} else {
+				f();
+				<option.a("value", "").a("selected", "selected").f().g("option");
+				<option.a("value", "true").f().sx("true").g("option");
+				<option.a("value", "false").f().sx("false").g("option");
+				g("select");
+			}
+
+		} else {
+			<span.a("class", "varSitePet", pk, "Update ").f().sx(htmUpdate()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmPetAmount"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}SitePetPetAmount">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-pale-green">
+							<label for="{{classApiMethodMethod}}_petAmount">How many updates? (If any.)</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{#block "inputPetAmount}}{{/block}}
+							</div>
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+								{{#ifeq "Page"classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green "
+												onclick="removeGlow($('#", {{classApiMethodMethod}}, "_petAmount')); $('#", {{classApiMethodMethod}}, "_petAmount').val(null); patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetAmount', null, function() { addGlow($('#", {{classApiMethodMethod}}, "_petAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petAmount')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/ifeq}}
+							{{/ifContainsKeysAnyRolesOrSessionId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/partial}}
+
+{{#partial "inputPetAmount"}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+			<textarea
+				.a("placeholder", "How many updates? (If any.)")
+				.a("id", {{classApiMethodMethod}}, "_petAmount");
+				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+					a("class", "setPetAmount classSitePet inputSitePet", pk, "PetAmount w3-input w3-border ");
+					a("name", "setPetAmount");
+				} else {
+					a("class", "valuePetAmount w3-input w3-border classSitePet inputSitePet", pk, "PetAmount w3-input w3-border ");
+					a("name", "petAmount");
+				}
+				if("Page".equals({{classApiMethodMethod}})) {
+					a("onclick", "removeGlow($(this)); ");
+					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petAmount')); }); ");
+				}
+			f().sx(strPetAmount()).g("textarea");
+
+		} else {
+			<span.a("class", "varSitePet", pk, "PetAmount ").f().sx(htmPetAmount()).g("span");
+		{{/ifContainsKeysAnyRolesOrSessionId}}
+{{/partial}}
+
+{{#partial "htmlScriptsSitePetGenPage"}}
+		<script src="staticBaseUrl, "/js/enUS/SitePetPage.js"></script>
+		<script src="staticBaseUrl, "/js/enUS/EnrollmentPage.js"></script>
+{{/partial}}
+
+{{#partial "htmlScriptSitePetGenPage"}}
+			$(document).ready(function() {
+				document.onkeydown = function(evt) {
+					evt = evt || window.event;
+					var isEscape = false;
+					if ('key' in evt) {
+						isEscape = (evt.key === 'Escape' || evt.key === 'Esc');
+					} else {
+						isEscape = (evt.keyCode === 27);
+					}
+					if (isEscape) {
+						$('.w3-modal:visible').hide();
+					}
+				};
+				window.eventBus = new EventBus('/eventbus');
+				var pk = ", Optional.ofNullable(siteRequest_.getRequestPk()).map(l -> l.toString()).orElse("null"), ";
+				if(pk != null) {
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+			tl(2, "suggestSitePetEnrollmentKeys([{'name':'fq','value':'petKeys:' + pk}], $('#listSitePetEnrollmentKeys_Page'), pk, true); ");
+		} else {
+			tl(2, "suggestSitePetEnrollmentKeys([{'name':'fq','value':'petKeys:' + pk}], $('#listSitePetEnrollmentKeys_Page'), pk, false); ");
+		}
+				}
+				websocketSitePet(websocketSitePetInner);
+			});
+{{/partial}}
+
+{{#partial "htmlFormPageSitePet"}}
+		<div class="w3-cell-row ">
+			o.htmPk("Page");
+			o.htmCreated("Page");
+			o.htmModified("Page");
+			o.htmObjectId("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("Page");
+			o.htmDeleted("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetName("Page");
+			o.htmPetFoodAmount("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmEnrollmentKeys("Page");
+			o.htmPetFood("Page");
+			o.htmPetSick("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetMedNote("Page");
+			o.htmPetTrouble("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUpdate("Page");
+			o.htmPetAmount("Page");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("Page");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPOSTSitePet"}}
+		<div class="w3-cell-row ">
+			o.htmPk("POST");
+			o.htmCreated("POST");
+			o.htmModified("POST");
+			o.htmObjectId("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("POST");
+			o.htmDeleted("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetName("POST");
+			o.htmPetFoodAmount("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmEnrollmentKeys("POST");
+			o.htmPetFood("POST");
+			o.htmPetSick("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetMedNote("POST");
+			o.htmPetTrouble("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUpdate("POST");
+			o.htmPetAmount("POST");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("POST");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPUTImportSitePet"}}
+		{ e("div class=\"w3-cell-row \">")			<textarea
+				 class=""PUTImport_list w3-input w3-border "
+				 style=""height: 400px; "
+				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
+				;
+				f();
+			g("textarea");
+		} g("div");
+{{/partial}}
+
+{{#partial "htmlFormPUTMergeSitePet"}}
+		{ e("div class=\"w3-cell-row \">")			<textarea
+				 class=""PUTMerge_list w3-input w3-border "
+				 style=""height: 400px; "
+				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
+				;
+				f();
+			g("textarea");
+		} g("div");
+{{/partial}}
+
+{{#partial "htmlFormPUTCopySitePet"}}
+		<div class="w3-cell-row ">
+			o.htmCreated("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("PUTCopy");
+			o.htmDeleted("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetName("PUTCopy");
+			o.htmPetFoodAmount("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmEnrollmentKeys("PUTCopy");
+			o.htmPetFood("PUTCopy");
+			o.htmPetSick("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetMedNote("PUTCopy");
+			o.htmPetTrouble("PUTCopy");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUpdate("PUTCopy");
+			o.htmPetAmount("PUTCopy");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormPATCHSitePet"}}
+		<div class="w3-cell-row ">
+			o.htmCreated("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("PATCH");
+			o.htmDeleted("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetName("PATCH");
+			o.htmPetFoodAmount("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmEnrollmentKeys("PATCH");
+			o.htmPetFood("PATCH");
+			o.htmPetSick("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetMedNote("PATCH");
+			o.htmPetTrouble("PATCH");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUpdate("PATCH");
+			o.htmPetAmount("PATCH");
+		</div>
+{{/partial}}
+
+{{#partial "htmlFormSearchSitePet"}}
+		<div class="w3-cell-row ">
+			o.htmPk("Search");
+			o.htmCreated("Search");
+			o.htmModified("Search");
+			o.htmObjectId("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmArchived("Search");
+			o.htmDeleted("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetName("Search");
+			o.htmPetFoodAmount("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmEnrollmentKeys("Search");
+			o.htmPetFood("Search");
+			o.htmPetSick("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmPetMedNote("Search");
+			o.htmPetTrouble("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUpdate("Search");
+			o.htmPetAmount("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmUserKeys("Search");
+		</div>
+		<div class="w3-cell-row ">
+			o.htmInheritPk("Search");
+			o.htmUserId("Search");
+			o.htmUserKey("Search");
+			o.htmObjectTitle("Search");
+		</div>
+{{/partial}}
+
+{{#partial "htmlBodySitePetGenPage"}}
+
+		ServiceRequest serviceRequest = siteRequest_.getServiceRequest();
+		JsonObject params = serviceRequest.getParams();
+		if(listSitePet_ == null || listSitePet_.size() == 0) {
+
+			{ e("h1>")				{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f().sx("pets").g("span");
+				} g("a");
+			} g("h1");
+			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			{ e("h2>")				{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f().sx("no pet found").g("span");
+				} g("span");
+			} g("h2");
+		} else if(listSitePet_ != null && listSitePet_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
+			SitePet o = listSitePet_.get(0);
+			siteRequest_.setRequestPk(o.getPk());
+			if(StringUtils.isNotEmpty(pageH1)) {
+				{ e("h1>")					{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")						if(contextIconCssClasses != null)
+							<i class="contextIconCssClasses + " site-menu-icon "></i>
+						e("span class=\" \"").f()pageH1.g("span");
+					} g("a");
+				} g("h1");
+			}
+			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			if(StringUtils.isNotEmpty(pageH2)) {
+				{ e("h2>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")						e("span class=\" \"").f()pageH2.g("span");
+					} g("span");
+				} g("h2");
+			}
+			if(StringUtils.isNotEmpty(pageH3)) {
+				{ e("h3>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")						e("span class=\" \"").f()pageH3.g("span");
+					} g("span");
+				} g("h3");
+			}
+		} else {
+
+			{ e("h1>")				{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")					if(contextIconCssClasses != null)
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					e("span class=\" \"").f()pageH1.g("span");
+				} g("a");
+			} g("h1");
+			{ e("div class=\"\">")				{ e("div>")					JsonObject queryParams = Optional.ofNullable(serviceRequest).map(ServiceRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
+					Long num = listSitePet_.getQueryResponse().getResults().getNumFound();
+					String q = "*:*";
+					String query1 = "objectText";
+					String query2 = "";
+					String query = "*:*";
+					for(String paramName : queryParams.fieldNames()) {
+						String entityVar = null;
+						String valueIndexed = null;
+						Object paramObjectValues = queryParams.getValue(paramName);
+						JsonArray paramObjects = paramObjectValues instanceof JsonArray ? (JsonArray)paramObjectValues : new JsonArray().add(paramObjectValues);
+
+						try {
+							for(Object paramObject : paramObjects) {
+								switch(paramName) {
+									case "q":
+										q = (String)paramObject;
+										entityVar = StringUtils.trim(StringUtils.substringBefore((String)paramObject, ":"));
+										valueIndexed = URLDecoder.decode(StringUtils.trim(StringUtils.substringAfter((String)paramObject, ":")), "UTF-8");
+										query1 = entityVar.equals("*") ? query1 : entityVar;
+										query2 = valueIndexed;
+										query = query1 + ":" + query2;
+								}
+							}
+						} catch(Exception e) {
+							ExceptionUtils.rethrow(e);
+						}
+					}
+
+					Integer rows1 = Optional.ofNullable(listSitePet_).map(l -> l.getRows()).orElse(10);
+					Integer start1 = Optional.ofNullable(listSitePet_).map(l -> l.getStart()).orElse(1);
+					Integer start2 = start1 - rows1;
+					Integer start3 = start1 + rows1;
+					Integer rows2 = rows1 / 2;
+					Integer rows3 = rows1 * 2;
+					start2 = start2 < 0 ? 0 : start2;
+					StringBuilder fqs = new StringBuilder();
+					for(String fq : Optional.ofNullable(listSitePet_).map(l -> l.getFilterQueries()).orElse(new String[0])) {
+						if(!StringUtils.contains(fq, "(")) {
+							String fq1 = StringUtils.substringBefore(fq, "_");
+							String fq2 = StringUtils.substringAfter(fq, ":");
+							if(!StringUtils.startsWithAny(fq, "classCanonicalNames_", "archived_", "deleted_", "sessionId", "userKeys"))
+								fqs.append("&fq=").append(fq1).append(":").append(fq2);
+						}
+					}
+					StringBuilder sorts = new StringBuilder();
+					for(SortClause sort : Optional.ofNullable(listSitePet_).map(l -> l.getSorts()).orElse(Arrays.asList())) {
+						sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
+					}
+
+					if(start1 == 0) {
+						e("i class=\"fas fa-arrow-square-left w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start2, "&rows=", rows1)>;
+							e("i class=\"fas fa-arrow-square-left \"").f().g("i");
+						} g("a");
+					}
+
+					if(rows1 <= 1) {
+						e("i class=\"fas fa-minus-square w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2)>;
+							e("i class=\"fas fa-minus-square \"").f().g("i");
+						} g("a");
+					}
+
+					<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3)>;
+						e("i class=\"fas fa-plus-square \"").f().g("i");
+					} g("a");
+
+					if(start3 >= num) {
+						e("i class=\"fas fa-arrow-square-right w3-opacity \"").f().g("i");
+					} else {
+						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1)>;
+							e("i class=\"fas fa-arrow-square-right \"").f().g("i");
+						} g("a");
+					}
+						<span>(start1 + 1), " - ", (start1 + rows1), " of ", num</span>
+				} g("div");
+				table1SitePetGenPage();
+			} g("div");
+		}
+
+		if(listSitePet_ != null && listSitePet_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
+			SitePet o = listSitePet_.first();
+
+			{ e("div class=\"\">")
+				if(o.getPk() != null) {
+					{ e("form").a("action", "").a("id", "SitePetForm style=\"display: inline-block; width: 100%; \" onsubmit=\"event.preventDefault(); return false; \">")						e("input")
+						.a("name", "pk")
+						.a("class", "valuePk")
+						.a("type", "hidden")
+						.a("value", o.getPk())
+						.fg();
+						e("input")
+						.a("name", "focusId")
+						.a("type", "hidden")
+						.fg();
+					} g("form");
+					htmlFormPageSitePet(o);
+				}
+
+			} g("div");
+
+		}
+		htmlBodyFormsSitePetGenPage();
+	}
+
+{{#partial "table1SitePetGenPage"}}
+		{ e("table class=\"w3-table w3-bordered w3-striped w3-border w3-hoverable \">")			table2SitePetGenPage();
+		} g("table");
+	}
+
+{{#partial "table2SitePetGenPage"}}
+		thead1SitePetGenPage();
+		tbody1SitePetGenPage();
+		tfoot1SitePetGenPage();
+	}
+
+{{#partial "thead1SitePetGenPage"}}
+		{ e("thead").a("class", "w3-pale-green w3-hover-pale-green >")			thead2SitePetGenPage();
+		} g("thead");
+	}
+
+{{#partial "thead2SitePetGenPage"}}
+			{ e("tr>")			if(getColumnCreated()) {
+				<th>"created"</th>
+			}
+			if(getColumnObjectTitle()) {
+				<th>""</th>
+			}
+			} g("tr");
+	}
+
+{{#partial "tbody1SitePetGenPage"}}
+		{ e("tbody>")			tbody2SitePetGenPage();
+		} g("tbody");
+	}
+
+{{#partial "tbody2SitePetGenPage"}}
+		Map<String, Map<String, List<String>>> highlighting = listSitePet_.getQueryResponse().getHighlighting();
+		for(int i = 0; i < listSitePet_.size(); i++) {
+			SitePet o = listSitePet_.getList().get(i);
+			Map<String, List<String>> highlights = highlighting == null ? null : highlighting.get(o.getId());
+			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
+			String uri = "/api/pet/" + o.getPk();
+			<tr>;
+				if(getColumnCreated()) {
+					<td>;
+						<a href="{{uri}}")>
+							<span>;
+								sx(o.strCreated());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
+				if(getColumnObjectTitle()) {
+					<td>;
+						<a href="{{uri}}")>
+							<i
+.a("class", "fas fa-dog ").f().g("i");
+							<span>;
+								sx(o.strObjectTitle());
+							} g("span");
+						} g("a");
+					} g("td");
+				}
+			} g("tr");
+		}
+	}
+
+{{#partial "tfoot1SitePetGenPage"}}
+		{ e("tfoot").a("class", "w3-pale-green w3-hover-pale-green >")			tfoot2SitePetGenPage();
+		} g("tfoot");
+	}
+
+{{#partial "tfoot2SitePetGenPage"}}
+		{ e("tr>")			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listSitePet_.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
+			if(getColumnCreated()) {
+				<td>;
+				g("td");
+			}
+			if(getColumnObjectTitle()) {
+				<td>;
+				g("td");
+			}
+		} g("tr");
+	}
+
+	public Boolean getColumnCreated() {
+		return true;
+	}
+
+	public Boolean getColumnObjectTitle() {
+		return true;
+	}
+
+{{#partial "htmlBodyFormsSitePetGenPage"}}
+		if(
+				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
+				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
+				) {
+
+			if(listSitePet_ != null && listSitePet_.size() == 1) {
+				{ e("button")
+					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+						.a("id", "refreshThisSitePetGenPage")
+						 onclick=""patchSitePetVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisSitePetGenPage')); }, function() { addError($('#refreshThisSitePetGenPage')); }); return false; ">						e("i class=\"fas fa-sync-alt \"").f().g("i");
+					sx("refresh this pet");
+				} g("button");
+			}
+		}
+		if(
+				siteRequest_.getUserResourceRoles().contains("SiteAdmin")
+				|| siteRequest_.getUserRealmRoles().contains("SiteAdmin")
+				) {
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+				.a("onclick", "$('#putimportSitePetModal').show(); ")
+				.f();
+				e("i class=\"fas fa-file-import \"").f().g("i");
+				sx("Import pets");
+			} g("button");
+			{ e("div").a("id", "putimportSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putimportSitePetModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Import pets").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putimportSitePetFormValues").f();
+							SitePet o = new SitePet();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putimportSitePetForm>")								htmlFormPUTImportSitePet(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+								 onclick=""putimportSitePet($('#putimportSitePetForm')); "
+								.f().sx("Import pets")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+				.a("onclick", "$('#putmergeSitePetModal').show(); ")
+				.f();
+				e("i class=\"fas fa-code-merge \"").f().g("i");
+				sx("Merge pets");
+			} g("button");
+			{ e("div").a("id", "putmergeSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putmergeSitePetModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Merge pets").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putmergeSitePetFormValues").f();
+							SitePet o = new SitePet();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putmergeSitePetForm>")								htmlFormPUTMergeSitePet(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+								 onclick=""putmergeSitePet($('#putmergeSitePetForm')); "
+								.f().sx("Merge pets")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+				.a("onclick", "$('#putcopySitePetModal').show(); ")
+				.f();
+				e("i class=\"fas fa-copy \"").f().g("i");
+				sx("Duplicate pets");
+			} g("button");
+			{ e("div").a("id", "putcopySitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putcopySitePetModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Duplicate pets").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "putcopySitePetFormValues").f();
+							SitePet o = new SitePet();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form PUT
+							{ e("div").a("id", "putcopySitePetForm>")								htmlFormPUTCopySitePet(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+								 onclick=""putcopySitePet($('#putcopySitePetForm'), ", sitePet_ == null ? "null" : sitePet_.getPk(), "; ")
+								.f().sx("Duplicate pets")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+				.a("onclick", "$('#postSitePetModal').show(); ")
+				.f();
+				e("i class=\"fas fa-file-plus \"").f().g("i");
+				sx("Create a pet");
+			} g("button");
+			{ e("div").a("id", "postSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#postSitePetModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Create a pet").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "postSitePetFormValues").f();
+							SitePet o = new SitePet();
+							o.setSiteRequest_(siteRequest_);
+
+							// Form POST
+							{ e("div").a("id", "postSitePetForm>")								htmlFormPOSTSitePet(o);
+							} g("div");
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+								 onclick=""postSitePet($('#postSitePetForm')); "
+								.f().sx("Create a pet")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+
+			{ e("button")
+				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+				.a("onclick", "$('#patchSitePetModal').show(); ")
+				.f();
+				e("i class=\"fas fa-edit \"").f().g("i");
+				sx("Modify pets");
+			} g("button");
+			{ e("div").a("id", "patchSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#patchSitePetModal').hide(); ").f().sx("×").g("span");
+							e("h2 class=\"w3-padding \"").f().sx("Modify pets").g("h2");
+						} g("header");
+						{ e("div class=\"w3-container \"").a("id", "patchSitePetFormValues").f();
+							SitePet o = new SitePet();
+							o.setSiteRequest_(siteRequest_);
+
+							htmlFormPATCHSitePet(o);
+							e("button")
+								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+								 onclick=""patchSitePet(null, $('#patchSitePetFormValues'), ", Optional.ofNullable(sitePet_).map(SitePet::getPk).map(a -> a.toString()).orElse("null", ", function() {}, function() {}); ")
+								.f().sx("Modify pets")
+							.g("button");
+
+						} g("div");
+					} g("div");
+				} g("div");
+			} g("div");
+
+		}
+		htmlSuggestedSitePetGenPage(this, null, listSitePet_);
+	
+
+	/**
+	**/
+	public static void htmlSuggestedSitePetGenPage(String id, SearchList<SitePet> listSitePet_) {
+		SiteRequestEnUS siteRequest_ = p.getSiteRequest_();
+		try {
+			ServiceRequest serviceRequest = siteRequest_.getServiceRequest();
+			JsonObject queryParams = Optional.ofNullable(serviceRequest).map(ServiceRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
+			String q = "*:*";
+			String query1 = "objectText";
+			String query2 = "";
+			for(String paramName : queryParams.fieldNames()) {
+				String entityVar = null;
+				String valueIndexed = null;
+				Object paramObjectValues = queryParams.getValue(paramName);
+				JsonArray paramObjects = paramObjectValues instanceof JsonArray ? (JsonArray)paramObjectValues : new JsonArray().add(paramObjectValues);
+
+				try {
+					for(Object paramObject : paramObjects) {
+						switch(paramName) {
+							case "q":
+								q = (String)paramObject;
+								entityVar = StringUtils.trim(StringUtils.substringBefore((String)paramObject, ":"));
+								valueIndexed = URLDecoder.decode(StringUtils.trim(StringUtils.substringAfter((String)paramObject, ":")), "UTF-8");
+								query1 = entityVar.equals("*") ? query1 : entityVar;
+								query2 = valueIndexed.equals("*") ? "" : valueIndexed;
+						}
+					}
+				} catch(Exception e) {
+					ExceptionUtils.rethrow(e);
+				}
+			}
+
+			Integer rows1 = Optional.ofNullable(listSitePet_).map(l -> l.getRows()).orElse(10);
+			Integer start1 = Optional.ofNullable(listSitePet_).map(l -> l.getStart()).orElse(1);
+			Integer start2 = start1 - rows1;
+			Integer start3 = start1 + rows1;
+			Integer rows2 = rows1 / 2;
+			Integer rows3 = rows1 * 2;
+			start2 = start2 < 0 ? 0 : start2;
+			StringBuilder fqs = new StringBuilder();
+			for(String fq : Optional.ofNullable(listSitePet_).map(l -> l.getFilterQueries()).orElse(new String[0])) {
+				if(!StringUtils.contains(fq, "(")) {
+					String fq1 = StringUtils.substringBefore(fq, "_");
+					String fq2 = StringUtils.substringAfter(fq, ":");
+					if(!StringUtils.startsWithAny(fq, "classCanonicalNames_", "archived_", "deleted_", "sessionId", "userKeys"))
+						fqs.append("&fq=").append(fq1).append(":").append(fq2);
+				}
+			}
+			StringBuilder sorts = new StringBuilder();
+			for(SortClause sort : Optional.ofNullable(listSitePet_).map(l -> l.getSorts()).orElse(Arrays.asList())) {
+				sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
+			}
+
+			if(
+					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), SitePetGenPage.ROLES)
+					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), SitePetGenPage.ROLES)
+					) {
+					{ p.e("div class=\"\">")						{ p.e("button").a("id", "refreshAllSitePetGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ") onclick=""patchSitePetVals([], {}, function() { addGlow($('#refreshAllSitePetGenPage", id, "')); }, function() { addError($('#refreshAllSitePetGenPage", id, "')); }); ".f();
+							p.e("i class=\"fas fa-sync-alt \"").f().g("i");
+							p.sx("refresh all the pets");
+						} p.g("button");
+					} p.g("div");
+			}
+			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell \">")					{ p.e("span>")						p.sx("search pets: ");
+					} p.g("span");
+				} p.g("div");
+			} p.g("div");
+			{ p.e("div class=\"w3-bar \">")
+				p.e("input")
+					.a("type", "text")
+					.a("class", "suggestSitePet w3-input w3-border w3-bar-item ")
+					.a("name", "suggestSitePet")
+					.a("id", "suggestSitePet", id)
+					.a("autocomplete", "off")
+					 oninput=""suggestSitePetObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListSitePet", id, "'), ", p.getSiteRequest_().getRequestPk(), "; ")
+					 onkeyup=""if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/api/pet?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"; 
+				if(listSitePet_ != null)
+					p.a("value", query2);
+				p.fg();
+				{ p.e("button")
+					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green ")
+					 onclick=""window.location.href = '/api/pet?q=", query1, ":' + encodeURIComponent(this.previousElementSibling.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; " 
+					.f();
+					p.e("i class=\"fas fa-search \"").f().g("i");
+				} p.g("button");
+
+			} p.g("div");
+			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell w3-left-align w3-cell-top \">")					{ p.e("ul class=\"w3-ul w3-hoverable \"").a("id", "suggestListSitePet", id)>					} p.g("ul");
+				} p.g("div");
+			} p.g("div");
+			{ p.e("div class=\"\">")				{ p.e("a").a("href", "/api/pet").a("class", ">")					p.e("i").a("class", "fas fa-dog ").f().g("i");
+					p.sx("see all the pets");
+				} p.g("a");
+			} p.g("div");
+		} catch(Exception e) {
+			ExceptionUtils.rethrow(e);
+		}
+	}
+
