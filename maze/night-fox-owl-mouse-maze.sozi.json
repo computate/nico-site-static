@@ -1,0 +1,80 @@
+{
+  "aspectWidth": 4,
+  "aspectHeight": 3,
+  "enableKeyboardZoom": false,
+  "enableKeyboardRotation": false,
+  "enableKeyboardNavigation": false,
+  "enableMouseTranslation": false,
+  "enableMouseZoom": false,
+  "enableMouseRotation": false,
+  "enableMouseNavigation": false,
+  "frames": [
+    {
+      "frameId": "frame8060",
+      "title": "New frame",
+      "timeoutMs": 0,
+      "timeoutEnable": false,
+      "transitionDurationMs": 1000,
+      "showInFrameList": true,
+      "showFrameNumber": true,
+      "layerProperties": {
+        "layer1": {
+          "link": false,
+          "referenceElementId": "",
+          "outlineElementId": "",
+          "outlineElementAuto": true,
+          "transitionTimingFunction": "linear",
+          "transitionRelativeZoom": 0,
+          "transitionPathId": ""
+        },
+        "__sozi_auto__": {
+          "link": false,
+          "referenceElementId": "",
+          "outlineElementId": "",
+          "outlineElementAuto": true,
+          "transitionTimingFunction": "linear",
+          "transitionRelativeZoom": 0,
+          "transitionPathId": ""
+        }
+      },
+      "cameraStates": {
+        "layer1": {
+          "cx": 148.89852226372335,
+          "cy": 163.65330736856976,
+          "width": 286.7473874292375,
+          "height": 214.8964974441082,
+          "opacity": 1,
+          "angle": 0,
+          "clipped": false,
+          "clipXOffset": 0,
+          "clipYOffset": 0,
+          "clipWidthFactor": 1,
+          "clipHeightFactor": 1
+        },
+        "__sozi_auto__": {
+          "cx": 148.89852226372335,
+          "cy": 163.65330736856976,
+          "width": 286.7473874292375,
+          "height": 214.8964974441082,
+          "opacity": 1,
+          "angle": 0,
+          "clipped": false,
+          "clipXOffset": 0,
+          "clipYOffset": 0,
+          "clipWidthFactor": 1,
+          "clipHeightFactor": 1
+        }
+      },
+      "cameraOffsets": {}
+    }
+  ],
+  "elementsToHide": [],
+  "selectedFrames": [
+    "frame8060"
+  ],
+  "selectedLayers": [
+    "layer1",
+    "__sozi_auto__"
+  ],
+  "editableLayers": []
+}
