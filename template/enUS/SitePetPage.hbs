@@ -440,17 +440,17 @@
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
-{{#partial "htmUpdate"}}
+{{#partial "htmSendpdates"}}
 		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
 			<div class="w3-padding ">
-				<div id="suggest{{classApiMethodMethod}}SitePetUpdate">
+				<div id="suggest{{classApiMethodMethod}}SitePetSendpdates">
 					<div class="w3-card ">
 						<div class="w3-cell-row w3-pale-green">
-							<label for="{{classApiMethodMethod}}_update">Do you want updates, if you do how many?</label>
+							<label for="{{classApiMethodMethod}}_sendpdates">Do you want updates, if you do how many?</label>
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputUpdate}}{{/block}}
+								{{#block "inputSendpdates}}{{/block}}
 							</div>
 						</div>
 					</div>
@@ -459,29 +459,29 @@
 		</div>
 {{/partial}}
 
-{{#partial "inputUpdate"}}
+{{#partial "inputSendpdates"}}
 		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
 			if("Page".equals({{classApiMethodMethod}})) {
 				<input
 					.a("type", "checkbox")
-					.a("id", {{classApiMethodMethod}}, "_update")
+					.a("id", {{classApiMethodMethod}}, "_sendpdates")
 					.a("value", "true");
 			} else {
 				<select
-					.a("id", {{classApiMethodMethod}}, "_update");
+					.a("id", {{classApiMethodMethod}}, "_sendpdates");
 			}
 			if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-				a("class", "setUpdate classSitePet inputSitePet", pk, "Update w3-input w3-border ");
-				a("name", "setUpdate");
+				a("class", "setSendpdates classSitePet inputSitePet", pk, "Sendpdates w3-input w3-border ");
+				a("name", "setSendpdates");
 			} else {
-				a("class", "valueUpdate classSitePet inputSitePet", pk, "Update w3-input w3-border ");
-				a("name", "update");
+				a("class", "valueSendpdates classSitePet inputSitePet", pk, "Sendpdates w3-input w3-border ");
+				a("name", "sendpdates");
 			}
 			if("Page".equals({{classApiMethodMethod}})) {
-				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setUpdate', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_update')); }, function() { addError($('#", {{classApiMethodMethod}}, "_update')); }); ");
+				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setSendpdates', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_sendpdates')); }, function() { addError($('#", {{classApiMethodMethod}}, "_sendpdates')); }); ");
 			}
 			if("Page".equals({{classApiMethodMethod}})) {
-				if(getUpdate() != null && getUpdate())
+				if(getSendpdates() != null && getSendpdates())
 					a("checked", "checked");
 				fg();
 			} else {
@@ -493,7 +493,7 @@
 			}
 
 		} else {
-			<span.a("class", "varSitePet", pk, "Update ").f().sx(htmUpdate()).g("span");
+			<span.a("class", "varSitePet", pk, "Sendpdates ").f().sx(htmSendpdates()).g("span");
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -612,7 +612,7 @@
 			o.htmPetTrouble("Page");
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUpdate("Page");
+			o.htmSendpdates("Page");
 			o.htmPetAmount("Page");
 		</div>
 		<div class="w3-cell-row ">
@@ -645,7 +645,7 @@
 			o.htmPetTrouble("POST");
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUpdate("POST");
+			o.htmSendpdates("POST");
 			o.htmPetAmount("POST");
 		</div>
 		<div class="w3-cell-row ">
@@ -697,7 +697,7 @@
 			o.htmPetTrouble("PUTCopy");
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUpdate("PUTCopy");
+			o.htmSendpdates("PUTCopy");
 			o.htmPetAmount("PUTCopy");
 		</div>
 {{/partial}}
@@ -724,7 +724,7 @@
 			o.htmPetTrouble("PATCH");
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUpdate("PATCH");
+			o.htmSendpdates("PATCH");
 			o.htmPetAmount("PATCH");
 		</div>
 {{/partial}}
@@ -754,7 +754,7 @@
 			o.htmPetTrouble("Search");
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUpdate("Search");
+			o.htmSendpdates("Search");
 			o.htmPetAmount("Search");
 		</div>
 		<div class="w3-cell-row ">

@@ -99,9 +99,9 @@ async function putcopySitePet($formValues, pk, success, error) {
 	if(valuePetTrouble != null && valuePetTrouble !== '')
 		vals['petTrouble'] = valuePetTrouble;
 
-	var valueUpdate = $formValues.find('.valueUpdate').val();
-	if(valueUpdate != null && valueUpdate !== '')
-		vals['update'] = valueUpdate == 'true';
+	var valueSendpdates = $formValues.find('.valueSendpdates').val();
+	if(valueSendpdates != null && valueSendpdates !== '')
+		vals['sendpdates'] = valueSendpdates == 'true';
 
 	var valuePetAmount = $formValues.find('.valuePetAmount').val();
 	if(valuePetAmount != null && valuePetAmount !== '')
@@ -215,9 +215,9 @@ async function postSitePet($formValues, success, error) {
 	if(valuePetTrouble != null && valuePetTrouble !== '')
 		vals['petTrouble'] = valuePetTrouble;
 
-	var valueUpdate = $formValues.find('.valueUpdate').val();
-	if(valueUpdate != null && valueUpdate !== '')
-		vals['update'] = valueUpdate == 'true';
+	var valueSendpdates = $formValues.find('.valueSendpdates').val();
+	if(valueSendpdates != null && valueSendpdates !== '')
+		vals['sendpdates'] = valueSendpdates == 'true';
 
 	var valuePetAmount = $formValues.find('.valuePetAmount').val();
 	if(valuePetAmount != null && valuePetAmount !== '')
@@ -433,21 +433,21 @@ async function patchSitePet($formFilters, $formValues, pk, success, error) {
 	if(removePetTrouble != null && removePetTrouble !== '')
 		vals['removePetTrouble'] = removePetTrouble;
 
-	var valueUpdate = $formValues.find('.valueUpdate').val();
-	var removeUpdate = $formValues.find('.removeUpdate').val() === 'true';
-	var valueUpdateSelectVal = $formValues.find('select.setUpdate').val();
-	var valueUpdate = null;
-	if(valueUpdateSelectVal != null && valueUpdateSelectVal !== '')
-		valueUpdate = valueUpdateSelectVal == 'true';
-	var setUpdate = removeUpdate ? null : valueUpdate;
-	var addUpdate = $formValues.find('.addUpdate').prop('checked');
-	if(removeUpdate || setUpdate != null && setUpdate !== '')
-		vals['setUpdate'] = setUpdate;
-	if(addUpdate != null && addUpdate !== '')
-		vals['addUpdate'] = addUpdate;
-	var removeUpdate = $formValues.find('.removeUpdate').prop('checked');
-	if(removeUpdate != null && removeUpdate !== '')
-		vals['removeUpdate'] = removeUpdate;
+	var valueSendpdates = $formValues.find('.valueSendpdates').val();
+	var removeSendpdates = $formValues.find('.removeSendpdates').val() === 'true';
+	var valueSendpdatesSelectVal = $formValues.find('select.setSendpdates').val();
+	var valueSendpdates = null;
+	if(valueSendpdatesSelectVal != null && valueSendpdatesSelectVal !== '')
+		valueSendpdates = valueSendpdatesSelectVal == 'true';
+	var setSendpdates = removeSendpdates ? null : valueSendpdates;
+	var addSendpdates = $formValues.find('.addSendpdates').prop('checked');
+	if(removeSendpdates || setSendpdates != null && setSendpdates !== '')
+		vals['setSendpdates'] = setSendpdates;
+	if(addSendpdates != null && addSendpdates !== '')
+		vals['addSendpdates'] = addSendpdates;
+	var removeSendpdates = $formValues.find('.removeSendpdates').prop('checked');
+	if(removeSendpdates != null && removeSendpdates !== '')
+		vals['removeSendpdates'] = removeSendpdates;
 
 	var valuePetAmount = $formValues.find('.valuePetAmount').val();
 	var removePetAmount = $formValues.find('.removePetAmount').val() === 'true';
@@ -598,15 +598,15 @@ function patchSitePetFilters($formFilters) {
 		if(filterPetTrouble != null && filterPetTrouble !== '')
 			filters.push({ name: 'fq', value: 'petTrouble:' + filterPetTrouble });
 
-		var $filterUpdateCheckbox = $formFilters.find('input.valueUpdate[type = "checkbox"]');
-		var $filterUpdateSelect = $formFilters.find('select.valueUpdate');
-		var filterUpdate = $filterUpdateSelect.length ? $filterUpdateSelect.val() : $filterUpdateCheckbox.prop('checked');
-		var filterUpdateSelectVal = $formFilters.find('select.filterUpdate').val();
-		var filterUpdate = null;
-		if(filterUpdateSelectVal !== '')
-			filterUpdate = filterUpdateSelectVal == 'true';
-		if(filterUpdate != null && filterUpdate === true)
-			filters.push({ name: 'fq', value: 'update:' + filterUpdate });
+		var $filterSendpdatesCheckbox = $formFilters.find('input.valueSendpdates[type = "checkbox"]');
+		var $filterSendpdatesSelect = $formFilters.find('select.valueSendpdates');
+		var filterSendpdates = $filterSendpdatesSelect.length ? $filterSendpdatesSelect.val() : $filterSendpdatesCheckbox.prop('checked');
+		var filterSendpdatesSelectVal = $formFilters.find('select.filterSendpdates').val();
+		var filterSendpdates = null;
+		if(filterSendpdatesSelectVal !== '')
+			filterSendpdates = filterSendpdatesSelectVal == 'true';
+		if(filterSendpdates != null && filterSendpdates === true)
+			filters.push({ name: 'fq', value: 'sendpdates:' + filterSendpdates });
 
 		var filterPetAmount = $formFilters.find('.valuePetAmount').val();
 		if(filterPetAmount != null && filterPetAmount !== '')
@@ -796,15 +796,15 @@ function searchSitePetFilters($formFilters) {
 		if(filterPetTrouble != null && filterPetTrouble !== '')
 			filters.push({ name: 'fq', value: 'petTrouble:' + filterPetTrouble });
 
-		var $filterUpdateCheckbox = $formFilters.find('input.valueUpdate[type = "checkbox"]');
-		var $filterUpdateSelect = $formFilters.find('select.valueUpdate');
-		var filterUpdate = $filterUpdateSelect.length ? $filterUpdateSelect.val() : $filterUpdateCheckbox.prop('checked');
-		var filterUpdateSelectVal = $formFilters.find('select.filterUpdate').val();
-		var filterUpdate = null;
-		if(filterUpdateSelectVal !== '')
-			filterUpdate = filterUpdateSelectVal == 'true';
-		if(filterUpdate != null && filterUpdate === true)
-			filters.push({ name: 'fq', value: 'update:' + filterUpdate });
+		var $filterSendpdatesCheckbox = $formFilters.find('input.valueSendpdates[type = "checkbox"]');
+		var $filterSendpdatesSelect = $formFilters.find('select.valueSendpdates');
+		var filterSendpdates = $filterSendpdatesSelect.length ? $filterSendpdatesSelect.val() : $filterSendpdatesCheckbox.prop('checked');
+		var filterSendpdatesSelectVal = $formFilters.find('select.filterSendpdates').val();
+		var filterSendpdates = null;
+		if(filterSendpdatesSelectVal !== '')
+			filterSendpdates = filterSendpdatesSelectVal == 'true';
+		if(filterSendpdates != null && filterSendpdates === true)
+			filters.push({ name: 'fq', value: 'sendpdates:' + filterSendpdates });
 
 		var filterPetAmount = $formFilters.find('.valuePetAmount').val();
 		if(filterPetAmount != null && filterPetAmount !== '')
@@ -1029,15 +1029,15 @@ function adminsearchSitePetFilters($formFilters) {
 		if(filterPetTrouble != null && filterPetTrouble !== '')
 			filters.push({ name: 'fq', value: 'petTrouble:' + filterPetTrouble });
 
-		var $filterUpdateCheckbox = $formFilters.find('input.valueUpdate[type = "checkbox"]');
-		var $filterUpdateSelect = $formFilters.find('select.valueUpdate');
-		var filterUpdate = $filterUpdateSelect.length ? $filterUpdateSelect.val() : $filterUpdateCheckbox.prop('checked');
-		var filterUpdateSelectVal = $formFilters.find('select.filterUpdate').val();
-		var filterUpdate = null;
-		if(filterUpdateSelectVal !== '')
-			filterUpdate = filterUpdateSelectVal == 'true';
-		if(filterUpdate != null && filterUpdate === true)
-			filters.push({ name: 'fq', value: 'update:' + filterUpdate });
+		var $filterSendpdatesCheckbox = $formFilters.find('input.valueSendpdates[type = "checkbox"]');
+		var $filterSendpdatesSelect = $formFilters.find('select.valueSendpdates');
+		var filterSendpdates = $filterSendpdatesSelect.length ? $filterSendpdatesSelect.val() : $filterSendpdatesCheckbox.prop('checked');
+		var filterSendpdatesSelectVal = $formFilters.find('select.filterSendpdates').val();
+		var filterSendpdates = null;
+		if(filterSendpdatesSelectVal !== '')
+			filterSendpdates = filterSendpdatesSelectVal == 'true';
+		if(filterSendpdates != null && filterSendpdates === true)
+			filters.push({ name: 'fq', value: 'sendpdates:' + filterSendpdates });
 
 		var filterPetAmount = $formFilters.find('.valuePetAmount').val();
 		if(filterPetAmount != null && filterPetAmount !== '')
@@ -1405,17 +1405,17 @@ async function websocketSitePetInner(apiRequest) {
 				});
 				addGlow($('.inputSitePet' + pk + 'PetTrouble'));
 			}
-			var val = o['update'];
-			if(vars.includes('update')) {
-				$('.inputSitePet' + pk + 'Update').each(function() {
+			var val = o['sendpdates'];
+			if(vars.includes('sendpdates')) {
+				$('.inputSitePet' + pk + 'Sendpdates').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varSitePet' + pk + 'Update').each(function() {
+				$('.varSitePet' + pk + 'Sendpdates').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputSitePet' + pk + 'Update'));
+				addGlow($('.inputSitePet' + pk + 'Sendpdates'));
 			}
 			var val = o['petAmount'];
 			if(vars.includes('petAmount')) {

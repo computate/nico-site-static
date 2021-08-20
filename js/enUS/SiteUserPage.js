@@ -107,17 +107,9 @@ function searchSiteUserFilters($formFilters) {
 		if(filterPageUrlPk != null && filterPageUrlPk !== '')
 			filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
 
-		var filterUserKey = $formFilters.find('.valueUserKey').val();
-		if(filterUserKey != null && filterUserKey !== '')
-			filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
 		var filterUserKeys = $formFilters.find('.valueUserKeys').val();
 		if(filterUserKeys != null && filterUserKeys !== '')
 			filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-		var filterUserId = $formFilters.find('.valueUserId').val();
-		if(filterUserId != null && filterUserId !== '')
-			filters.push({ name: 'fq', value: 'userId:' + filterUserId });
 
 		var filterUserName = $formFilters.find('.valueUserName').val();
 		if(filterUserName != null && filterUserName !== '')
@@ -270,6 +262,18 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	if(removeInheritPk != null && removeInheritPk !== '')
 		vals['removeInheritPk'] = removeInheritPk;
 
+	var valueSessionId = $formValues.find('.valueSessionId').val();
+	var removeSessionId = $formValues.find('.removeSessionId').val() === 'true';
+	var setSessionId = removeSessionId ? null : $formValues.find('.setSessionId').val();
+	var addSessionId = $formValues.find('.addSessionId').val();
+	if(removeSessionId || setSessionId != null && setSessionId !== '')
+		vals['setSessionId'] = setSessionId;
+	if(addSessionId != null && addSessionId !== '')
+		vals['addSessionId'] = addSessionId;
+	var removeSessionId = $formValues.find('.removeSessionId').val();
+	if(removeSessionId != null && removeSessionId !== '')
+		vals['removeSessionId'] = removeSessionId;
+
 	var valueUserId = $formValues.find('.valueUserId').val();
 	var removeUserId = $formValues.find('.removeUserId').val() === 'true';
 	var setUserId = removeUserId ? null : $formValues.find('.setUserId').val();
@@ -305,30 +309,6 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	var removeObjectTitle = $formValues.find('.removeObjectTitle').val();
 	if(removeObjectTitle != null && removeObjectTitle !== '')
 		vals['removeObjectTitle'] = removeObjectTitle;
-
-	var valueUserKey = $formValues.find('.valueUserKey').val();
-	var removeUserKey = $formValues.find('.removeUserKey').val() === 'true';
-	var setUserKey = removeUserKey ? null : $formValues.find('.setUserKey').val();
-	var addUserKey = $formValues.find('.addUserKey').val();
-	if(removeUserKey || setUserKey != null && setUserKey !== '')
-		vals['setUserKey'] = setUserKey;
-	if(addUserKey != null && addUserKey !== '')
-		vals['addUserKey'] = addUserKey;
-	var removeUserKey = $formValues.find('.removeUserKey').val();
-	if(removeUserKey != null && removeUserKey !== '')
-		vals['removeUserKey'] = removeUserKey;
-
-	var valueUserId = $formValues.find('.valueUserId').val();
-	var removeUserId = $formValues.find('.removeUserId').val() === 'true';
-	var setUserId = removeUserId ? null : $formValues.find('.setUserId').val();
-	var addUserId = $formValues.find('.addUserId').val();
-	if(removeUserId || setUserId != null && setUserId !== '')
-		vals['setUserId'] = setUserId;
-	if(addUserId != null && addUserId !== '')
-		vals['addUserId'] = addUserId;
-	var removeUserId = $formValues.find('.removeUserId').val();
-	if(removeUserId != null && removeUserId !== '')
-		vals['removeUserId'] = removeUserId;
 
 	var valueUserName = $formValues.find('.valueUserName').val();
 	var removeUserName = $formValues.find('.removeUserName').val() === 'true';
@@ -489,17 +469,9 @@ function patchSiteUserFilters($formFilters) {
 		if(filterPageUrlPk != null && filterPageUrlPk !== '')
 			filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
 
-		var filterUserKey = $formFilters.find('.valueUserKey').val();
-		if(filterUserKey != null && filterUserKey !== '')
-			filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
 		var filterUserKeys = $formFilters.find('.valueUserKeys').val();
 		if(filterUserKeys != null && filterUserKeys !== '')
 			filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-		var filterUserId = $formFilters.find('.valueUserId').val();
-		if(filterUserId != null && filterUserId !== '')
-			filters.push({ name: 'fq', value: 'userId:' + filterUserId });
 
 		var filterUserName = $formFilters.find('.valueUserName').val();
 		if(filterUserName != null && filterUserName !== '')
@@ -588,6 +560,10 @@ async function postSiteUser($formValues, success, error) {
 	if(valueInheritPk != null && valueInheritPk !== '')
 		vals['inheritPk'] = valueInheritPk;
 
+	var valueSessionId = $formValues.find('.valueSessionId').val();
+	if(valueSessionId != null && valueSessionId !== '')
+		vals['sessionId'] = valueSessionId;
+
 	var valueUserId = $formValues.find('.valueUserId').val();
 	if(valueUserId != null && valueUserId !== '')
 		vals['userId'] = valueUserId;
@@ -599,14 +575,6 @@ async function postSiteUser($formValues, success, error) {
 	var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
 	if(valueObjectTitle != null && valueObjectTitle !== '')
 		vals['objectTitle'] = valueObjectTitle;
-
-	var valueUserKey = $formValues.find('.valueUserKey').val();
-	if(valueUserKey != null && valueUserKey !== '')
-		vals['userKey'] = valueUserKey;
-
-	var valueUserId = $formValues.find('.valueUserId').val();
-	if(valueUserId != null && valueUserId !== '')
-		vals['userId'] = valueUserId;
 
 	var valueUserName = $formValues.find('.valueUserName').val();
 	if(valueUserName != null && valueUserName !== '')
@@ -950,18 +918,6 @@ async function websocketSiteUserInner(apiRequest) {
 				});
 				addGlow($('.inputSiteUser' + pk + 'PageUrlPk'));
 			}
-			var val = o['userKey'];
-			if(vars.includes('userKey')) {
-				$('.inputSiteUser' + pk + 'UserKey').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSiteUser' + pk + 'UserKey').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSiteUser' + pk + 'UserKey'));
-			}
 			var val = o['userKeys'];
 			if(vars.includes('userKeys')) {
 				$('.inputSiteUser' + pk + 'UserKeys').each(function() {
@@ -973,18 +929,6 @@ async function websocketSiteUserInner(apiRequest) {
 						$(this).text(val);
 				});
 				addGlow($('.inputSiteUser' + pk + 'UserKeys'));
-			}
-			var val = o['userId'];
-			if(vars.includes('userId')) {
-				$('.inputSiteUser' + pk + 'UserId').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSiteUser' + pk + 'UserId').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSiteUser' + pk + 'UserId'));
 			}
 			var val = o['userName'];
 			if(vars.includes('userName')) {
