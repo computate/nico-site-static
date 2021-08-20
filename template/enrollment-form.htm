@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; ">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="https://nico-dev.computate.org:10780/static/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://nico-dev.computate.org:10780/static/css/w3.css"/>
+    <link rel="stylesheet" href="https://nico-dev.computate.org:10780/static/css/site-enUS.css"/>
+    <script src="https://nico-dev.computate.org:10780/static/js/jquery-1.12.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/59d19567d5.js"></script>
+    <script src="https://nico-dev.computate.org:10780/static/js/site-enUS.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/moment.min.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/jqDatePicker.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/enUS/PetPage.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/sockjs.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/vertx-eventbus.js"></script>
+		<script src="https://nico-dev.computate.org:10780/static/js/enUS/EnrollmentPage.js"></script>
+    <script>/*<!-CDATA[*/
+$(document).ready(function() {
+  window.eventBus = new EventBus('/eventbus');
+  var pk = '173';
+  if(pk === '') {
+    $("#page1").prepend('<h1 class="far fa-spinner w3-spin "></i><span class="w3-padding ">Please wait while the enrollment form loads...</span></h1>');
+    postSitePetVals({}, function(pet) {
+      postSiteEnrollmentVals({ petKeys: [pet['pk'].toString()] }, function(enrollment) {
+        window.location.href='/page/enrollment-form?var=enrollmentKey:' + enrollment['pk'];
+      });
+    });
+  }
+  suggestSiteEnrollmentPetKeys([{'name':'fq', 'value':'enrollmentKeys:' + pk}], $('#listSiteEnrollmentPetKeys_Page'), pk);
+  window.eventBus.onopen = function () {
+    window.eventBus.registerHandler('websocketSiteEnrollment', function(error, message) {
+      var json = JSON.parse(message['body']);
+      websocketSiteEnrollmentInner(json);
+      websocketSiteEnrollmentRelations(json);
+    });
+    window.eventBus.registerHandler('websocketSitePet', function(error, message) {
+      var json = JSON.parse(message['body']);
+      websocketSitePetInner(json);
+      $('#Page_petKey').trigger('oninput');
+      $('#Page_petKey_add').text('add a child');
+      $('#Page_petKey_add').removeClass('w3-disabled');
+      $('#Page_petKey_add').attr('disabled', false);
+    });
+  };
+}); 
+
+async function websocketSiteEnrollmentRelations(patchRequest) {
+  var pk = patchRequest['pk'];
+  var pks = patchRequest['pks'];
+  var classes = patchRequest['classes'];
+  var vars = patchRequest['vars'];
+  var empty = patchRequest['empty'];
+}
+    /*]]>*/</script>
+  </head>
+  <body class="w3-light-gray " style="height: 100%; ">
+    <div class="w3-center w3-white ">
+      <div class="w3-top w3-white ">
+        <div class="site-menu-custom w3-bar w3-text-black w3-padding-bottom-8 w3-padding-top-8 font-weight-bold " style="padding-left: 16px; padding-right: 16px; font-family: Overlock; ">
+          <div class="w3-bar-item w3-btn grow-50 ">
+            <a class="text-decoration-none " href="/"><i class="far fa-home "></i> Home</a>
+          </div>
+      <a href="https://nico-dev.computate.org:10780#animals" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-dog-leashed"></i> Animals</a>
+      <a href="https://nico-dev.computate.org:10780#about" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-info-circle"></i>About</a>
+      <a href="https://nico-dev.computate.org:10780#pricing" class="w3-bar-item w3-btn grow-50"><i class="fad fa-usd-square"></i> Pricing</a>
+      <a href="https://nico-dev.computate.org:10780#contact" class="w3-bar-item w3-btn grow-50"><i class="fad fa-phone-office"></i> Contact</a>
+
+					<div class="w3-dropdown-hover ">
+						<div class="w3-button w3-hover-green ">
+							<i class="fad fa-house-user "></i>nicoandsloan@gmail.com
+						</div>
+						<div class="w3-dropdown-content w3-card-4 w3-padding ">
+							<div class="w3-cell-row ">
+								<a href="/user/1" class=""><i class="far fa-user "></i>my user page</a>
+							</div>
+							<div class="w3-cell-row ">
+								<label for="Page_seeArchived" class="">see archived
+								</label>
+								<input type="checkbox" value="true" class="setSeeArchived" name="setSeeArchived" id="Page_seeArchived" onchange="patchSiteUserVal([{ name: 'fq', value: 'pk:' + 1 }], 'setSeeArchived', $(this).prop('checked'), function() { addGlow($('#Page_seeArchived')); }, function() { addError($('#Page_seeArchived')); }); "/>
+							</div>
+							<div class="w3-cell-row ">
+								<label for="Page_seeDeleted" class="">see deleted
+								</label>
+								<input type="checkbox" value="true" class="setSeeDeleted" name="setSeeDeleted" id="Page_seeDeleted" onchange="patchSiteUserVal([{ name: 'fq', value: 'pk:' + 1 }], 'setSeeDeleted', $(this).prop('checked'), function() { addGlow($('#Page_seeDeleted')); }, function() { addError($('#Page_seeDeleted')); }); "/>
+							</div>
+						</div>
+					</div>
+					<div class="site-bar-item w3-bar-item ">
+						<a class="w3-padding " href="https://sso.computate.org/auth/realms/COMPUTATE.ORG/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fnico-dev.computate.org%3A10780%2Flogout"><span class="site-menu-item"><i class="far fa-sign-out-alt "></i>logout</span></a>
+					</div>
+        </div>
+      </div>
+    </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+    <div>
+    <div><div class="w3-cell w3-cell-top w3-center w3-mobile ">
+  <div class="w3-padding ">
+    <div id="suggestPageSiteEnrollmentPetKeys">
+      <div class="w3-card ">
+        <div class="w3-cell-row ">
+          <a href="/pet?fq=enrollmentKeys:173" class="w3-cell w3-btn w3-center h4 w3-block h4 w3-pale-green w3-hover-pale-green "><i class="fas fa-dog "></i>pets</a>
+        </div>
+        <div class="w3-cell-row ">
+          <h5 class="w3-cell ">relate  to this enrollment</h5>
+        </div>
+        <div class="w3-cell-row w3-padding ">
+          <div class="w3-cell ">
+            <div class="w3-cell-row ">
+              <i class="far fa-search w3-xxlarge w3-cell w3-cell-middle "></i>
+              <input type="text" placeholder="pets" class="valueObjectSuggest suggestPetKeys w3-input w3-border w3-cell w3-cell-middle " name="setPetKeys" id="Page_petKeys" autocomplete="off" oninput="suggestSiteEnrollmentPetKeys($(this).val() ? [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ] : [{'name':'fq','value':'enrollmentKeys:173'}], $('#listSiteEnrollmentPetKeys_Page'), 173); "/>
+            </div>
+          </div>
+        </div>
+        <div class="w3-cell-row w3-padding ">
+          <div class="w3-cell w3-left-align w3-cell-top ">
+            <ul class="w3-ul w3-hoverable " id="listSiteEnrollmentPetKeys_Page">
+            </ul>
+            <div class="w3-cell-row ">
+              <button class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green " id="Page_petKeys_add" onclick="$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postSitePetVals({ enrollmentKeys: [ &quot;173&quot; ] }, function() {}, function() { addError($('#PagepetKeys')); });">add a pet
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    </div>
+    <div class="w3-margin ">Pet name:<input type="text" placeholder="name of pet:" id="Page_petName" class="setPetName classSitePet inputSitePet172PetName w3-input w3-border " name="setPetName" onclick="removeGlow($(this)); " onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetName', $(this).val(), function() { addGlow($('#Page_petName')); }, function() { addError($('#Page_petName')); }); " value="Sloan"/>    </div>
+    <div class="w3-margin ">How much does your pet eat? <textarea placeholder="How much does your pet eat?" id="Page_petFoodAmount" class="setPetFoodAmount classSitePet inputSitePet172PetFoodAmount w3-input w3-border " name="setPetFoodAmount" onclick="removeGlow($(this)); " onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetFoodAmount', $(this).val(), function() { addGlow($('#Page_petFoodAmount')); }, function() { addError($('#Page_petFoodAmount')); }); ">asdf</textarea>    </div>
+    <div class="w3-margin ">What does your pet eat?<textarea placeholder="What does your pet eat?" id="Page_petFood" class="setPetFood classSitePet inputSitePet172PetFood w3-input w3-border " name="setPetFood" onclick="removeGlow($(this)); " onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetFood', $(this).val(), function() { addGlow($('#Page_petFood')); }, function() { addError($('#Page_petFood')); }); ">asdf</textarea>    </div>
+    <div class="w3-margin ">
+      <div class="">Is your pet sick, or need medication?</div>
+      <div class="w3-align-left ">
+<input type="checkbox" id="Page_petSick" value="true" class="setPetSick classSitePet inputSitePet172PetSick w3-input w3-border " name="setPetSick" onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetSick', $(this).prop('checked'), function() { addGlow($('#Page_petSick')); }, function() { addError($('#Page_petSick')); }); "/>      </div>
+    </div>
+    <div><div class="w3-cell w3-cell-top w3-center w3-mobile ">
+  <div class="w3-padding ">
+    <div id="suggestPageSitePetPetMedNote">
+      <div class="w3-card ">
+        <div class="w3-cell-row w3-pale-green ">
+          <label for="Page_petMedNote" class="">Additional notes for medication:
+          </label>
+        </div>
+        <div class="w3-cell-row w3-padding ">
+          <div class="w3-cell ">
+            <textarea placeholder="Additional notes for medication:" id="Page_petMedNote" class="setPetMedNote classSitePet inputSitePet172PetMedNote w3-input w3-border " name="setPetMedNote" onclick="removeGlow($(this)); " onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetMedNote', $(this).val(), function() { addGlow($('#Page_petMedNote')); }, function() { addError($('#Page_petMedNote')); }); "></textarea>
+          </div>
+          <div class="w3-cell w3-left-align w3-cell-top ">
+            <button tabindex="-1" class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green " onclick="removeGlow($('#Page_petMedNote')); $('#Page_petMedNote').val(null); patchSitePetVal([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetMedNote', null, function() { addGlow($('#Page_petMedNote')); }, function() { addError($('#Page_petMedNote')); }); ">
+              <i class="far fa-eraser "></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    </div>
+    <div><div class="w3-cell w3-cell-top w3-center w3-mobile ">
+  <div class="w3-padding ">
+    <div id="suggestPageSitePetPetTrouble">
+      <div class="w3-card ">
+        <div class="w3-cell-row w3-pale-green ">
+          <label for="Page_petTrouble" class="">What would get your pet in trouble?
+          </label>
+        </div>
+        <div class="w3-cell-row w3-padding ">
+          <div class="w3-cell ">
+            <textarea placeholder="What would get your pet in trouble?" id="Page_petTrouble" class="setPetTrouble classSitePet inputSitePet172PetTrouble w3-input w3-border " name="setPetTrouble" onclick="removeGlow($(this)); " onchange="patchSitePetVal([{ name: 'fq', value: 'pk:172' }], 'setPetTrouble', $(this).val(), function() { addGlow($('#Page_petTrouble')); }, function() { addError($('#Page_petTrouble')); }); "></textarea>
+          </div>
+          <div class="w3-cell w3-left-align w3-cell-top ">
+            <button tabindex="-1" class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green " onclick="removeGlow($('#Page_petTrouble')); $('#Page_petTrouble').val(null); patchSitePetVal([{ name: 'fq', value: 'pk:' + $('#SitePetForm :input[name=pk]').val() }], 'setPetTrouble', null, function() { addGlow($('#Page_petTrouble')); }, function() { addError($('#Page_petTrouble')); }); ">
+              <i class="far fa-eraser "></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    </div>
+    </div>
+    <footer class="w3-center w3-black w3-text-white w3-padding-24 ">
+      <div>
+        <a href="https://github.com/computate/nico-site" class="w3-small ">This site is open source.</a>
+        <a href="https://www.openshift.com/products/online/"><span class="w3-small ">Powered by </span><img alt="" class="w3-image " style="display: inline-block; width: 100px; margin: 0 10px;" src="https://nico-dev.computate.org:10780/static/svg/openshift.svg"/></a>
+      </div>
+    </footer>
+  </body>
+</html>
