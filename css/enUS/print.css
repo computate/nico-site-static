@@ -1,0 +1,107 @@
+html {
+	font-family: "Open Sans", sans-serif;
+	font-size: 10px;
+}
+
+@page { 
+	size: 8.5in 11in; 
+	margin-top: 0.5in; 
+	margin-bottom: 0.75in; 
+	margin-left: 0.5in; 
+	margin-right: 0.5in; 
+	@bottom-center { 
+		content: 'Page ' counter(page) ' of ' counter(pages); 
+	} 
+} 
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+}
+table {
+	-fs-table-paginate: paginate;
+}
+tr {
+	page-break-inside: avoid; 
+}
+.page-break-inside-avoid {
+	page-break-inside: avoid; 
+}
+.page-break {
+	page-break-before: always; 
+}
+.page-break-before {
+	page-break-before: always; 
+}
+.page-break-after {
+	page-break-after: always; 
+}
+.page-input {
+	border-bottom: 1px solid black; 
+}
+input[type=text] {
+	width: 180px;
+}
+input[type=checkbox] {
+	width: 12px;
+	height: 12px;
+}
+textarea {
+	height: 3em;
+}
+/*
+.fa-check-square-o { 
+	min-width: 20px; min-height: 16px; 
+	background: url(https://orchard.computate.org/svg/check-square-o.svg) no-repeat center center; 
+	background-size: 20px; 
+}
+.fa-square-o { 
+	min-width: 20px; min-height: 16px; 
+	background: url(https://orchard.computate.org/svg/square-o.svg) no-repeat center center; 
+	background-size: 20px; 
+}
+*/
+
+
+body {
+	font-size: 10px;
+	font-family: sans-serif; 
+} 
+table {
+	width: 100%; 
+	border-collapse: collapse;
+	border-top: 0.3px solid gray;
+	border-left: 0.3px solid gray;
+}
+td, th {
+	padding: 0 0.2em;
+	border-bottom: 0.3px solid gray;
+	border-right: 0.3px solid gray;
+}
+.enfantNom {
+	font-weight: bold; 
+	width: 80px; 
+}
+.enfantNomPresence {
+	font-weight: bold; 
+	width: 120px; 
+}
+.attendanceEmpty {
+	font-weight: bold; 
+	width: 30px; 
+}
+.enfantDateNaissance {
+	width: 35px; 
+}
+.enfantConditionsMedicales {
+	width: 50px; 
+}
+.rapport-titre {
+	font-weight: bold; 
+	font-size: 15px;
+}
+.rapportMedicalesEnfantNom, .rapportPhotosEnfantNom {
+	width: 150px; 
+}
+.rapportEnfantConditionsMedicales, .rapportPhotos {
+	width: 520px; 
+}

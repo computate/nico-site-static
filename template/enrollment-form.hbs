@@ -2,19 +2,19 @@
 <html lang="en" style="height: 100%; ">
   <head>
     <meta charset="UTF-8"/>
-    <link rel="icon" href="https://nico-dev.computate.org:10780/static/favicon.ico"/>
+    <link rel="icon" href="{{STATIC_BASE_URL}}/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://nico-dev.computate.org:10780/static/css/w3.css"/>
-    <link rel="stylesheet" href="https://nico-dev.computate.org:10780/static/css/site-enUS.css"/>
-    <script src="https://nico-dev.computate.org:10780/static/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="{{STATIC_BASE_URL}}/css/w3.css"/>
+    <link rel="stylesheet" href="{{STATIC_BASE_URL}}/css/site-enUS.css"/>
+    <script src="{{STATIC_BASE_URL}}/js/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/59d19567d5.js"></script>
-    <script src="https://nico-dev.computate.org:10780/static/js/site-enUS.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/moment.min.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/jqDatePicker.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/enUS/PetPage.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/sockjs.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/vertx-eventbus.js"></script>
-		<script src="https://nico-dev.computate.org:10780/static/js/enUS/EnrollmentPage.js"></script>
+    <script src="{{STATIC_BASE_URL}}/js/site-enUS.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/moment.min.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/jqDatePicker.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/enUS/PetPage.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/sockjs.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/vertx-eventbus.js"></script>
+		<script src="{{STATIC_BASE_URL}}/js/enUS/EnrollmentPage.js"></script>
     <script>/*<!-CDATA[*/
 $(document).ready(function() {
   window.eventBus = new EventBus('/eventbus');
@@ -61,10 +61,10 @@ async function websocketSiteEnrollmentRelations(patchRequest) {
           <div class="w3-bar-item w3-btn grow-50 ">
             <a class="text-decoration-none " href="/"><i class="far fa-home "></i> Home</a>
           </div>
-      <a href="https://nico-dev.computate.org:10780#animals" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-dog-leashed"></i> Animals</a>
-      <a href="https://nico-dev.computate.org:10780#about" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-info-circle"></i>About</a>
-      <a href="https://nico-dev.computate.org:10780#pricing" class="w3-bar-item w3-btn grow-50"><i class="fad fa-usd-square"></i> Pricing</a>
-      <a href="https://nico-dev.computate.org:10780#contact" class="w3-bar-item w3-btn grow-50"><i class="fad fa-phone-office"></i> Contact</a>
+      <a href="/#animals" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-dog-leashed"></i> Animals</a>
+      <a href="/#about" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-info-circle"></i>About</a>
+      <a href="/#pricing" class="w3-bar-item w3-btn grow-50"><i class="fad fa-usd-square"></i> Pricing</a>
+      <a href="/#contact" class="w3-bar-item w3-btn grow-50"><i class="fad fa-phone-office"></i> Contact</a>
 
 					<div class="w3-dropdown-hover ">
 						<div class="w3-button w3-hover-green ">
@@ -186,7 +186,7 @@ async function websocketSiteEnrollmentRelations(patchRequest) {
     <footer class="w3-center w3-black w3-text-white w3-padding-24 ">
       <div>
         <a href="https://github.com/computate/nico-site" class="w3-small ">This site is open source.</a>
-        <a href="https://www.openshift.com/products/online/"><span class="w3-small ">Powered by </span><img alt="" class="w3-image " style="display: inline-block; width: 100px; margin: 0 10px;" src="https://nico-dev.computate.org:10780/static/svg/openshift.svg"/></a>
+        <a href="https://www.openshift.com/products/online/"><span class="w3-small ">Powered by </span><img alt="" class="w3-image " style="display: inline-block; width: 100px; margin: 0 10px;" src="{{STATIC_BASE_URL}}/svg/openshift.svg"/></a>
       </div>
     </footer>
   </body>
