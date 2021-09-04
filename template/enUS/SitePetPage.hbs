@@ -1,7 +1,7 @@
 
 {{#partial "htmUserKeys"}}
 		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
-			if("Page".equals({{classApiMethodMethod}})) {
+			{{#eq 'Page' classApiMethodMethod}}
 				<div class="w3-padding ">
 					<div class="w3-card ">
 						<div class="w3-cell-row w3-pale-green">
@@ -10,14 +10,13 @@
 						<div class="w3-cell-row  ">
 							<div class="w3-cell ">
 								<div class="w3-rest ">
-									<span.a("class", "varSitePet", pk, "UserKeys ").f()
-.sx(strUserKeys()).g("span");
+									<span class="{{varSitePet}}{{pk}}UserKeys ">{{strUserKeys}}</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			}
+			{{/eq}}
 		</div>
 {{/partial}}
 
@@ -32,42 +31,37 @@
 						<div class="w3-cell-row ">
 							<a href="/enrollment?fq=petKeys:", pk" class="w3-cell w3-btn w3-center h4 w3-block h4 w3-red w3-hover-red ">
 								<i class="fad fa-clipboard-list "></i>
-								sx(enrollments);
+								enrollments
 							</a>
 						</div>
 						<div class="w3-cell-row ">
 							<h5 class="w3-cell ">
-								sx(relate  to this pet);
+								relate  to this pet
 							</h5>
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
 								<div class="w3-cell-row ">
 
-								{{#block "inputEnrollmentKeys}}{{/block}}
+								{{#block "inputEnrollmentKeys"}}{{/block}}
 								</div>
 							</div>
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell w3-left-align w3-cell-top ">
-								{ <ul class"w3-ul w3-hoverable " id="listSitePetEnrollmentKeys_", {{classApiMethodMethod}}">
-								} g("ul");
-								{
-
-									if("Page".equals({{classApiMethodMethod}})) {
+								<ul class="w3-ul w3-hoverable " id="listSitePetEnrollmentKeys_{{classApiMethodMethod}}">
+								</ul>
+									{{#eq 'Page' classApiMethodMethod}}
 										<div class="w3-cell-row ">
 											<button
 
-												.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red ")
-												.a("id", {{classApiMethodMethod}}, "_enrollmentKeys_add")
-												.a("onclick", "$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postSiteEnrollmentVals({ petKeys: [ \"", pk, "\" ] }
-, function() {}, function() { addError($('#", {{classApiMethodMethod}}, "enrollmentKeys')); });")
-												.f().sx("add an enrollment")
-											.g("button");
+												 class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-red "
+												 id=", {{classApiMethodMethod}}_enrollmentKeys_add"
+												 onclick="$(this).addClass('w3-disabled'); this.disabled = true; this.innerHTML = 'Sending…'; postSiteEnrollmentVals({ petKeys: [ \"", pk, "\" ] }, function() {}, function() { addError($('#", {{classApiMethodMethod}}, "enrollmentKeys')); });"
+												>add an enrollment
+											</button>
 										</div>
-									}
-
-								}
+									{{/eq}}
 
 							</div>
 						</div>
@@ -78,31 +72,30 @@
 {{/partial}}
 
 {{#partial "inputEnrollmentKeys"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-			<i
-.a("class", "far fa-search w3-xxlarge w3-cell w3-cell-middle ").f().g("i");
-			if("PUTCopy".equals({{classApiMethodMethod}})) {
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+			<i class="far fa-search w3-xxlarge w3-cell w3-cell-middle "></i>
+			{{#eq 'PUTCopy' classApiMethodMethod}}
 				<div>
-					<input
+					<input 
 						type="checkbox"
 						id="{{classApiMethodMethod}}_enrollmentKeys_clear"
 						class="enrollmentKeys_clear "
 						>
 					<label for="{{classApiMethodMethod}}_enrollmentKeys_clear>clear</label>
 				</div>
-			}
+			{{/eq}}
 			<input
 					type="text"
 					placeholderenrollments
-				.a("class", "valueObjectSuggest suggestEnrollmentKeys w3-input w3-border w3-cell w3-cell-middle ")
-				.a("name", "setEnrollmentKeys")
-				.a("id", {{classApiMethodMethod}}, "_enrollmentKeys")
-				.a("autocomplete", "off");
-				a("oninput", "suggestSitePetEnrollmentKeys($(this).val() ? [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ] : [", pk == null ? "" : "{'name':'fq','value':'petKeys:" + pk + "'}", "], $('#listSitePetEnrollmentKeys_", {{classApiMethodMethod}}, "'), ", pk, "); ");
+				class="valueObjectSuggest suggestEnrollmentKeys w3-input w3-border w3-cell w3-cell-middle "
+				name="setEnrollmentKeys"
+				id="{{classApiMethodMethod}}_enrollmentKeys"
+				autocomplete="off"
+				oninput="suggestSitePetEnrollmentKeys($(this).val() ? [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ] : [", pk == null ? "" : "{'name':'fq','value':'petKeys:" + pk + "'}", "], $('#listSitePetEnrollmentKeys_", {{classApiMethodMethod}}, "'), ", pk, "
+				/>
 
-				fg();
+		{{else}}
 
-		} else {
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -116,10 +109,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetName}}{{/block}}
+								{{#block "inputPetName"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -129,7 +122,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -139,27 +132,41 @@
 {{/partial}}
 
 {{#partial "inputPetName"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<input
-				.a("type", "text")
-				.a("placeholder", "name of pet:")
-				.a("id", {{classApiMethodMethod}}, "_petName");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetName classSitePet inputSitePet", pk, "PetName w3-input w3-border ");
-					a("name", "setPetName");
-				} else {
-					a("class", "valuePetName w3-input w3-border classSitePet inputSitePet", pk, "PetName w3-input w3-border ");
-					a("name", "petName");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetName', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petName')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petName')); }); ");
-				}
-				a("value", strPetName())
-			.fg();
+				 type="text"
+				 placeholder="name of pet:"
+				id="{{classApiMethodMethod}}_petName"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetName classSitePet inputSitePet{{pk}}PetName w3-input w3-border 
+					name="setPetName"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetName classSitePet inputSitePet{{pk}}PetName w3-input w3-border 
+					name="setPetName"
+				
+{{else}}
+					class="valuePetName w3-input w3-border classSitePet inputSitePet", pk, "PetName w3-input w3-border "
+					name="petName"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetName', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petName')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petName')); }); "
+				
+{{/eq}}
+				value="{{PetName}}">
+			/>
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetName ").f().sx(htmPetName()).g("span");
+		{{else}}
+
+			<span class="varSitePet{{pk}}PetName >{{htmPetName}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -173,10 +180,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetFoodAmount}}{{/block}}
+								{{#block "inputPetFoodAmount"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -186,7 +193,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -196,25 +203,39 @@
 {{/partial}}
 
 {{#partial "inputPetFoodAmount"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<textarea
-				.a("placeholder", "How much does your pet eat?")
-				.a("id", {{classApiMethodMethod}}, "_petFoodAmount");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetFoodAmount classSitePet inputSitePet", pk, "PetFoodAmount w3-input w3-border ");
-					a("name", "setPetFoodAmount");
-				} else {
-					a("class", "valuePetFoodAmount w3-input w3-border classSitePet inputSitePet", pk, "PetFoodAmount w3-input w3-border ");
-					a("name", "petFoodAmount");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFoodAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }); ");
-				}
-			f().sx(strPetFoodAmount()).g("textarea");
+				 placeholder="How much does your pet eat?"
+				id="{{classApiMethodMethod}}_petFoodAmount"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetFoodAmount classSitePet inputSitePet{{pk}}PetFoodAmount w3-input w3-border 
+					name="setPetFoodAmount"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetFoodAmount classSitePet inputSitePet{{pk}}PetFoodAmount w3-input w3-border 
+					name="setPetFoodAmount"
+				
+{{else}}
+					class="valuePetFoodAmount w3-input w3-border classSitePet inputSitePet", pk, "PetFoodAmount w3-input w3-border "
+					name="petFoodAmount"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFoodAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFoodAmount')); }); "
+				
+{{/eq}}
+			>{{petFoodAmount}}
+</textarea>
+		{{else}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetFoodAmount ").f().sx(htmPetFoodAmount()).g("span");
+			<span class="varSitePet{{pk}}PetFoodAmount >{{htmPetFoodAmount}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -228,10 +249,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetFood}}{{/block}}
+								{{#block "inputPetFood"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -241,7 +262,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -251,25 +272,39 @@
 {{/partial}}
 
 {{#partial "inputPetFood"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<textarea
-				.a("placeholder", "What does your pet eat?")
-				.a("id", {{classApiMethodMethod}}, "_petFood");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetFood classSitePet inputSitePet", pk, "PetFood w3-input w3-border ");
-					a("name", "setPetFood");
-				} else {
-					a("class", "valuePetFood w3-input w3-border classSitePet inputSitePet", pk, "PetFood w3-input w3-border ");
-					a("name", "petFood");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFood', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFood')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFood')); }); ");
-				}
-			f().sx(strPetFood()).g("textarea");
+				 placeholder="What does your pet eat?"
+				id="{{classApiMethodMethod}}_petFood"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetFood classSitePet inputSitePet{{pk}}PetFood w3-input w3-border 
+					name="setPetFood"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetFood classSitePet inputSitePet{{pk}}PetFood w3-input w3-border 
+					name="setPetFood"
+				
+{{else}}
+					class="valuePetFood w3-input w3-border classSitePet inputSitePet", pk, "PetFood w3-input w3-border "
+					name="petFood"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetFood', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petFood')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petFood')); }); "
+				
+{{/eq}}
+			>{{petFood}}
+</textarea>
+		{{else}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetFood ").f().sx(htmPetFood()).g("span");
+			<span class="varSitePet{{pk}}PetFood >{{htmPetFood}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -283,7 +318,7 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetSick}}{{/block}}
+								{{#block "inputPetSick"}}{{/block}}
 							</div>
 						</div>
 					</div>
@@ -293,8 +328,8 @@
 {{/partial}}
 
 {{#partial "inputPetSick"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-			if("Page".equals({{classApiMethodMethod}})) {
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+			{{#eq 'Page' classApiMethodMethod}}
 				<input
 					.a("type", "checkbox")
 					.a("id", {{classApiMethodMethod}}, "_petSick")
@@ -302,31 +337,38 @@
 			} else {
 				<select
 					.a("id", {{classApiMethodMethod}}, "_petSick");
-			}
-			if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
 				a("class", "setPetSick classSitePet inputSitePet", pk, "PetSick w3-input w3-border ");
 				a("name", "setPetSick");
-			} else {
+			{{else}}
+			{{#eq 'Page' classApiMethodMethod}}
+				a("class", "setPetSick classSitePet inputSitePet", pk, "PetSick w3-input w3-border ");
+				a("name", "setPetSick");
+			{{else}}
 				a("class", "valuePetSick classSitePet inputSitePet", pk, "PetSick w3-input w3-border ");
 				a("name", "petSick");
-			}
-			if("Page".equals({{classApiMethodMethod}})) {
+			{{/eq}}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
 				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetSick', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_petSick')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petSick')); }); ");
-			}
-			if("Page".equals({{classApiMethodMethod}})) {
-				if(getPetSick() != null && getPetSick())
-					a("checked", "checked");
-				fg();
-			} else {
-				f();
-				<option.a("value", "").a("selected", "selected").f().g("option");
-				<option.a("value", "true").f().sx("true").g("option");
-				<option.a("value", "false").f().sx("false").g("option");
-				g("select");
-			}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				{{#if petSick}}
+					checked"checked"
+				>
+			{{else}}
+				>
+				<option value="" selected="selected"></option>
+				<option value="true">true</option>
+				<option value="false">false</option>
+				</select>
+			{{/if}}
+			{{/eq}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetSick ").f().sx(htmPetSick()).g("span");
+		{{else}}
+
+			<span class="varSitePet{{pk}}PetSick >{{htmPetSick}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -340,10 +382,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetMedNote}}{{/block}}
+								{{#block "inputPetMedNote"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -353,7 +395,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -363,25 +405,39 @@
 {{/partial}}
 
 {{#partial "inputPetMedNote"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<textarea
-				.a("placeholder", "Additional notes for medication:")
-				.a("id", {{classApiMethodMethod}}, "_petMedNote");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetMedNote classSitePet inputSitePet", pk, "PetMedNote w3-input w3-border ");
-					a("name", "setPetMedNote");
-				} else {
-					a("class", "valuePetMedNote w3-input w3-border classSitePet inputSitePet", pk, "PetMedNote w3-input w3-border ");
-					a("name", "petMedNote");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetMedNote', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petMedNote')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petMedNote')); }); ");
-				}
-			f().sx(strPetMedNote()).g("textarea");
+				 placeholder="Additional notes for medication:"
+				id="{{classApiMethodMethod}}_petMedNote"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetMedNote classSitePet inputSitePet{{pk}}PetMedNote w3-input w3-border 
+					name="setPetMedNote"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetMedNote classSitePet inputSitePet{{pk}}PetMedNote w3-input w3-border 
+					name="setPetMedNote"
+				
+{{else}}
+					class="valuePetMedNote w3-input w3-border classSitePet inputSitePet", pk, "PetMedNote w3-input w3-border "
+					name="petMedNote"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetMedNote', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petMedNote')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petMedNote')); }); "
+				
+{{/eq}}
+			>{{petMedNote}}
+</textarea>
+		{{else}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetMedNote ").f().sx(htmPetMedNote()).g("span");
+			<span class="varSitePet{{pk}}PetMedNote >{{htmPetMedNote}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -395,10 +451,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetTrouble}}{{/block}}
+								{{#block "inputPetTrouble"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -408,7 +464,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -418,25 +474,39 @@
 {{/partial}}
 
 {{#partial "inputPetTrouble"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<textarea
-				.a("placeholder", "What would get your pet in trouble?")
-				.a("id", {{classApiMethodMethod}}, "_petTrouble");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetTrouble classSitePet inputSitePet", pk, "PetTrouble w3-input w3-border ");
-					a("name", "setPetTrouble");
-				} else {
-					a("class", "valuePetTrouble w3-input w3-border classSitePet inputSitePet", pk, "PetTrouble w3-input w3-border ");
-					a("name", "petTrouble");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetTrouble', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petTrouble')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petTrouble')); }); ");
-				}
-			f().sx(strPetTrouble()).g("textarea");
+				 placeholder="What would get your pet in trouble?"
+				id="{{classApiMethodMethod}}_petTrouble"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetTrouble classSitePet inputSitePet{{pk}}PetTrouble w3-input w3-border 
+					name="setPetTrouble"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetTrouble classSitePet inputSitePet{{pk}}PetTrouble w3-input w3-border 
+					name="setPetTrouble"
+				
+{{else}}
+					class="valuePetTrouble w3-input w3-border classSitePet inputSitePet", pk, "PetTrouble w3-input w3-border "
+					name="petTrouble"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetTrouble', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petTrouble')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petTrouble')); }); "
+				
+{{/eq}}
+			>{{petTrouble}}
+</textarea>
+		{{else}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetTrouble ").f().sx(htmPetTrouble()).g("span");
+			<span class="varSitePet{{pk}}PetTrouble >{{htmPetTrouble}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -450,7 +520,7 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputSendpdates}}{{/block}}
+								{{#block "inputSendpdates"}}{{/block}}
 							</div>
 						</div>
 					</div>
@@ -460,8 +530,8 @@
 {{/partial}}
 
 {{#partial "inputSendpdates"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-			if("Page".equals({{classApiMethodMethod}})) {
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+			{{#eq 'Page' classApiMethodMethod}}
 				<input
 					.a("type", "checkbox")
 					.a("id", {{classApiMethodMethod}}, "_sendpdates")
@@ -469,31 +539,38 @@
 			} else {
 				<select
 					.a("id", {{classApiMethodMethod}}, "_sendpdates");
-			}
-			if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
 				a("class", "setSendpdates classSitePet inputSitePet", pk, "Sendpdates w3-input w3-border ");
 				a("name", "setSendpdates");
-			} else {
+			{{else}}
+			{{#eq 'Page' classApiMethodMethod}}
+				a("class", "setSendpdates classSitePet inputSitePet", pk, "Sendpdates w3-input w3-border ");
+				a("name", "setSendpdates");
+			{{else}}
 				a("class", "valueSendpdates classSitePet inputSitePet", pk, "Sendpdates w3-input w3-border ");
 				a("name", "sendpdates");
-			}
-			if("Page".equals({{classApiMethodMethod}})) {
+			{{/eq}}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
 				a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setSendpdates', $(this).prop('checked'), function() { addGlow($('#", {{classApiMethodMethod}}, "_sendpdates')); }, function() { addError($('#", {{classApiMethodMethod}}, "_sendpdates')); }); ");
-			}
-			if("Page".equals({{classApiMethodMethod}})) {
-				if(getSendpdates() != null && getSendpdates())
-					a("checked", "checked");
-				fg();
-			} else {
-				f();
-				<option.a("value", "").a("selected", "selected").f().g("option");
-				<option.a("value", "true").f().sx("true").g("option");
-				<option.a("value", "false").f().sx("false").g("option");
-				g("select");
-			}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				{{#if sendpdates}}
+					checked"checked"
+				>
+			{{else}}
+				>
+				<option value="" selected="selected"></option>
+				<option value="true">true</option>
+				<option value="false">false</option>
+				</select>
+			{{/if}}
+			{{/eq}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "Sendpdates ").f().sx(htmSendpdates()).g("span");
+		{{else}}
+
+			<span class="varSitePet{{pk}}Sendpdates >{{htmSendpdates}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -507,10 +584,10 @@
 						</div>
 						<div class="w3-cell-row w3-padding ">
 							<div class="w3-cell ">
-								{{#block "inputPetAmount}}{{/block}}
+								{{#block "inputPetAmount"}}{{/block}}
 							</div>
-							{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
-								{{#ifeq "Page"classApiMethodMethod}}
+							{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
+								{{#eq 'Page' classApiMethodMethod}}
 									<div class="w3-cell w3-left-align w3-cell-top ">
 										<button
 												tabindex="-1"
@@ -520,7 +597,7 @@
 											<i class="far fa-eraser "></i>
 										</button>
 									</div>
-								{{/ifeq}}
+								{{/eq}}
 							{{/ifContainsKeysAnyRolesOrSessionId}}
 						</div>
 					</div>
@@ -530,25 +607,39 @@
 {{/partial}}
 
 {{#partial "inputPetAmount"}}
-		{{#ifContainsKeysAnyRolesOrSessionId userKeys, roles, ROLES, sessionId}}
+		{{#ifContainsKeysAnyRolesOrSessionId userKeys roles ROLES sessionId}}
 			<textarea
-				.a("placeholder", "How many updates? (If any.)")
-				.a("id", {{classApiMethodMethod}}, "_petAmount");
-				if("Page".equals({{classApiMethodMethod}}) || "PATCH".equals({{classApiMethodMethod}})) {
-					a("class", "setPetAmount classSitePet inputSitePet", pk, "PetAmount w3-input w3-border ");
-					a("name", "setPetAmount");
-				} else {
-					a("class", "valuePetAmount w3-input w3-border classSitePet inputSitePet", pk, "PetAmount w3-input w3-border ");
-					a("name", "petAmount");
-				}
-				if("Page".equals({{classApiMethodMethod}})) {
-					a("onclick", "removeGlow($(this)); ");
-					a("onchange", "patch", getClass().getSimpleName(), "Val([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petAmount')); }); ");
-				}
-			f().sx(strPetAmount()).g("textarea");
+				 placeholder="How many updates? (If any.)"
+				id="{{classApiMethodMethod}}_petAmount"
+				
+{{#eq "Page" classApiMethodMethod}}
+					class="setPetAmount classSitePet inputSitePet{{pk}}PetAmount w3-input w3-border 
+					name="setPetAmount"
+				
+{{else}}
+				
+{{#eq "PATCH" classApiMethodMethod}}
+					class="setPetAmount classSitePet inputSitePet{{pk}}PetAmount w3-input w3-border 
+					name="setPetAmount"
+				
+{{else}}
+					class="valuePetAmount w3-input w3-border classSitePet inputSitePet", pk, "PetAmount w3-input w3-border "
+					name="petAmount"
+				
+{{/eq}}
+				
+{{/eq}}
+				
+{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchSitePetVal([{ name: 'fq', value: 'pk:", pk, "' }], 'setPetAmount', $(this).val(), function() { addGlow($('#", {{classApiMethodMethod}}, "_petAmount')); }, function() { addError($('#", {{classApiMethodMethod}}, "_petAmount')); }); "
+				
+{{/eq}}
+			>{{petAmount}}
+</textarea>
+		{{else}}
 
-		} else {
-			<span.a("class", "varSitePet", pk, "PetAmount ").f().sx(htmPetAmount()).g("span");
+			<span class="varSitePet{{pk}}PetAmount >{{htmPetAmount}}</span>
 		{{/ifContainsKeysAnyRolesOrSessionId}}
 {{/partial}}
 
@@ -589,323 +680,339 @@
 
 {{#partial "htmlFormPageSitePet"}}
 		<div class="w3-cell-row ">
-			o.htmPk("Page");
-			o.htmCreated("Page");
-			o.htmModified("Page");
-			o.htmObjectId("Page");
+			{{> htmPk classApiMethodMethod="Page"}}
+			{{> htmCreated classApiMethodMethod="Page"}}
+			{{> htmModified classApiMethodMethod="Page"}}
+			{{> htmObjectId classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmArchived("Page");
-			o.htmDeleted("Page");
+			{{> htmArchived classApiMethodMethod="Page"}}
+			{{> htmDeleted classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetName("Page");
-			o.htmPetFoodAmount("Page");
+			{{> htmPetName classApiMethodMethod="Page"}}
+			{{> htmPetFoodAmount classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmEnrollmentKeys("Page");
-			o.htmPetFood("Page");
-			o.htmPetSick("Page");
+			{{> htmEnrollmentKeys classApiMethodMethod="Page"}}
+			{{> htmPetFood classApiMethodMethod="Page"}}
+			{{> htmPetSick classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetMedNote("Page");
-			o.htmPetTrouble("Page");
+			{{> htmPetMedNote classApiMethodMethod="Page"}}
+			{{> htmPetTrouble classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmSendpdates("Page");
-			o.htmPetAmount("Page");
+			{{> htmSendpdates classApiMethodMethod="Page"}}
+			{{> htmPetAmount classApiMethodMethod="Page"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUserKeys("Page");
+			{{> htmUserKeys classApiMethodMethod="Page"}}
 		</div>
 {{/partial}}
 
 {{#partial "htmlFormPOSTSitePet"}}
 		<div class="w3-cell-row ">
-			o.htmPk("POST");
-			o.htmCreated("POST");
-			o.htmModified("POST");
-			o.htmObjectId("POST");
+			{{> htmPk classApiMethodMethod="POST"}}
+			{{> htmCreated classApiMethodMethod="POST"}}
+			{{> htmModified classApiMethodMethod="POST"}}
+			{{> htmObjectId classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmArchived("POST");
-			o.htmDeleted("POST");
+			{{> htmArchived classApiMethodMethod="POST"}}
+			{{> htmDeleted classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetName("POST");
-			o.htmPetFoodAmount("POST");
+			{{> htmPetName classApiMethodMethod="POST"}}
+			{{> htmPetFoodAmount classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmEnrollmentKeys("POST");
-			o.htmPetFood("POST");
-			o.htmPetSick("POST");
+			{{> htmEnrollmentKeys classApiMethodMethod="POST"}}
+			{{> htmPetFood classApiMethodMethod="POST"}}
+			{{> htmPetSick classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetMedNote("POST");
-			o.htmPetTrouble("POST");
+			{{> htmPetMedNote classApiMethodMethod="POST"}}
+			{{> htmPetTrouble classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmSendpdates("POST");
-			o.htmPetAmount("POST");
+			{{> htmSendpdates classApiMethodMethod="POST"}}
+			{{> htmPetAmount classApiMethodMethod="POST"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUserKeys("POST");
+			{{> htmUserKeys classApiMethodMethod="POST"}}
 		</div>
 {{/partial}}
 
 {{#partial "htmlFormPUTImportSitePet"}}
-		{ e("div class=\"w3-cell-row \">")			<textarea
-				 class=""PUTImport_list w3-input w3-border "
-				 style=""height: 400px; "
-				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
-				;
-				f();
-			g("textarea");
-		} g("div");
+		<div class="w3-cell-row ">
+			<textarea
+				class="PUTImport_list w3-input w3-border "
+				style="height: 400px; "
+				placeholder="{ 'list': [ { 'pk': ... , 'saves': [ ... ] }, ... ] }"
+				></textarea>
+		</div>
 {{/partial}}
 
 {{#partial "htmlFormPUTMergeSitePet"}}
-		{ e("div class=\"w3-cell-row \">")			<textarea
-				 class=""PUTMerge_list w3-input w3-border "
-				 style=""height: 400px; "
-				 placeholder=""{ \"list\": [ { \"pk\": ... , \"saves\": [ ... ] }, ... ] }"
-				;
-				f();
-			g("textarea");
-		} g("div");
+		<div class="w3-cell-row ">
+			<textarea
+				class="PUTPUTMerge_list w3-input w3-border "
+				style="height: 400px; "
+				placeholder="{ 'list': [ { 'pk': ... , 'saves': [ ... ] }, ... ] }"
+				></textarea>
+		</div>
 {{/partial}}
 
 {{#partial "htmlFormPUTCopySitePet"}}
 		<div class="w3-cell-row ">
-			o.htmCreated("PUTCopy");
+			{{> htmCreated classApiMethodMethod="PUTCopy"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmArchived("PUTCopy");
-			o.htmDeleted("PUTCopy");
+			{{> htmArchived classApiMethodMethod="PUTCopy"}}
+			{{> htmDeleted classApiMethodMethod="PUTCopy"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetName("PUTCopy");
-			o.htmPetFoodAmount("PUTCopy");
+			{{> htmPetName classApiMethodMethod="PUTCopy"}}
+			{{> htmPetFoodAmount classApiMethodMethod="PUTCopy"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmEnrollmentKeys("PUTCopy");
-			o.htmPetFood("PUTCopy");
-			o.htmPetSick("PUTCopy");
+			{{> htmEnrollmentKeys classApiMethodMethod="PUTCopy"}}
+			{{> htmPetFood classApiMethodMethod="PUTCopy"}}
+			{{> htmPetSick classApiMethodMethod="PUTCopy"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetMedNote("PUTCopy");
-			o.htmPetTrouble("PUTCopy");
+			{{> htmPetMedNote classApiMethodMethod="PUTCopy"}}
+			{{> htmPetTrouble classApiMethodMethod="PUTCopy"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmSendpdates("PUTCopy");
-			o.htmPetAmount("PUTCopy");
+			{{> htmSendpdates classApiMethodMethod="PUTCopy"}}
+			{{> htmPetAmount classApiMethodMethod="PUTCopy"}}
 		</div>
 {{/partial}}
 
 {{#partial "htmlFormPATCHSitePet"}}
 		<div class="w3-cell-row ">
-			o.htmCreated("PATCH");
+			{{> htmCreated classApiMethodMethod="PATCH"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmArchived("PATCH");
-			o.htmDeleted("PATCH");
+			{{> htmArchived classApiMethodMethod="PATCH"}}
+			{{> htmDeleted classApiMethodMethod="PATCH"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetName("PATCH");
-			o.htmPetFoodAmount("PATCH");
+			{{> htmPetName classApiMethodMethod="PATCH"}}
+			{{> htmPetFoodAmount classApiMethodMethod="PATCH"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmEnrollmentKeys("PATCH");
-			o.htmPetFood("PATCH");
-			o.htmPetSick("PATCH");
+			{{> htmEnrollmentKeys classApiMethodMethod="PATCH"}}
+			{{> htmPetFood classApiMethodMethod="PATCH"}}
+			{{> htmPetSick classApiMethodMethod="PATCH"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetMedNote("PATCH");
-			o.htmPetTrouble("PATCH");
+			{{> htmPetMedNote classApiMethodMethod="PATCH"}}
+			{{> htmPetTrouble classApiMethodMethod="PATCH"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmSendpdates("PATCH");
-			o.htmPetAmount("PATCH");
+			{{> htmSendpdates classApiMethodMethod="PATCH"}}
+			{{> htmPetAmount classApiMethodMethod="PATCH"}}
 		</div>
 {{/partial}}
 
 {{#partial "htmlFormSearchSitePet"}}
 		<div class="w3-cell-row ">
-			o.htmPk("Search");
-			o.htmCreated("Search");
-			o.htmModified("Search");
-			o.htmObjectId("Search");
+			{{> htmPk classApiMethodMethod="Search"}}
+			{{> htmCreated classApiMethodMethod="Search"}}
+			{{> htmModified classApiMethodMethod="Search"}}
+			{{> htmObjectId classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmArchived("Search");
-			o.htmDeleted("Search");
+			{{> htmArchived classApiMethodMethod="Search"}}
+			{{> htmDeleted classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetName("Search");
-			o.htmPetFoodAmount("Search");
+			{{> htmPetName classApiMethodMethod="Search"}}
+			{{> htmPetFoodAmount classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmEnrollmentKeys("Search");
-			o.htmPetFood("Search");
-			o.htmPetSick("Search");
+			{{> htmEnrollmentKeys classApiMethodMethod="Search"}}
+			{{> htmPetFood classApiMethodMethod="Search"}}
+			{{> htmPetSick classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmPetMedNote("Search");
-			o.htmPetTrouble("Search");
+			{{> htmPetMedNote classApiMethodMethod="Search"}}
+			{{> htmPetTrouble classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmSendpdates("Search");
-			o.htmPetAmount("Search");
+			{{> htmSendpdates classApiMethodMethod="Search"}}
+			{{> htmPetAmount classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmUserKeys("Search");
+			{{> htmUserKeys classApiMethodMethod="Search"}}
 		</div>
 		<div class="w3-cell-row ">
-			o.htmInheritPk("Search");
-			o.htmUserId("Search");
-			o.htmUserKey("Search");
-			o.htmObjectTitle("Search");
+			{{> htmInheritPk classApiMethodMethod="Search"}}
+			{{> htmSessionId classApiMethodMethod="Search"}}
+			{{> htmUserId classApiMethodMethod="Search"}}
+			{{> htmUserKey classApiMethodMethod="Search"}}
+			{{> htmObjectTitle classApiMethodMethod="Search"}}
 		</div>
 {{/partial}}
 
+{{#partial "htmlUrlSitePet"}}
+/api/pet?q={{query.q}}&rows={{#if rows}}{{rows}}{{else}}{{pagination.rows}}{{/eq}}&start={{#if start}}{{start}}{{else}}{{pagination.start}}{{/eq}}{{#each query.fq}}{{#eq fq this}}{{else}}&fq={{fq}}:{{val}}{{/eq}}{{/each}}{{#each query.sort}}{{#eq sort this}}{{else}}&sort={{var}} {{order}}{{/eq}}{{/each}}{{/partial}}
+
 {{#partial "htmlBodySitePetGenPage"}}
 
-		ServiceRequest serviceRequest = siteRequest_.getServiceRequest();
-		JsonObject params = serviceRequest.getParams();
-		if(listSitePet_ == null || listSitePet_.size() == 0) {
+		{{#if listSitePet_}}
+			{{#eq listSitePet_.length 1}}
+				{{#eq params.query.q "*:*"}}
+					{{#with listSitePet_[0]}}
+					{{#if pageH1}}
+						<h1>
+							<a href="{{> htmlUrlSitePet}}" class="w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green">
+								{{#if contextIconCssClasses}}
+									<i class="contextIconCssClasses site-menu-icon "></i>
+								{{/if}}
+								<span class="">{{pageH1}}</span>
+							</a>
+						</h1>
+					{{/if}}
+					<div class="w3-padding-16 w3-card-4 w3-light-grey ">
+					{{#if pageH2}}
+						<h2>
+							<span class"w3-bar-item w3-padding w3-center w3-block w3-pale-green">
+								<span class="">{{pageH2}}</span>
+							</span>
+						</h2>
+					{{/if}}
+					{{#if pageH3}}
+						<h3>
+							<span class="w3-bar-item w3-padding w3-center w3-block w3-pale-green">
+								<span class="">{{pageH3}}</span>
+							</span>
+						</h3>
+					{{/if}}
+				{{else}}
 
-			{ e("h1>")				{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")					if(contextIconCssClasses != null)
-						<i class="contextIconCssClasses + " site-menu-icon "></i>
-					e("span class=\" \"").f().sx("pets").g("span");
-				} g("a");
-			} g("h1");
-			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			{ e("h2>")				{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")					if(contextIconCssClasses != null)
-						<i class="contextIconCssClasses + " site-menu-icon "></i>
-					e("span class=\" \"").f().sx("no pet found").g("span");
-				} g("span");
-			} g("h2");
-		} else if(listSitePet_ != null && listSitePet_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
-			SitePet o = listSitePet_.get(0);
-			siteRequest_.setRequestPk(o.getPk());
-			if(StringUtils.isNotEmpty(pageH1)) {
-				{ e("h1>")					{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")						if(contextIconCssClasses != null)
+					<h1>
+						<a href="{{> htmlUrlSitePet}}" class="w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green">
+							{{#if contextIconCssClasses}}
+								<i class="contextIconCssClasses + " site-menu-icon "></i>
+							{{/if}}
+							<span class="">{{pageH1}}</span>
+						</a>
+					</h1>
+					<div class="">
+						<div>
+
+							{{#if pagination.pagePrevious}}
+								<a href="{{> htmlUrlSitePet fq=start}}">
+									<i class="fas fa-arrow-square-left "></i>
+								</a>
+								{{else}}
+								<i class="fas fa-arrow-square-left w3-opacity "></i>
+							{{/if}}
+
+							if(rows1 <= 1) {
+								<i class="fas fa-minus-square w3-opacity "></i>
+							{{else}}
+								<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2)>;
+									<i class="fas fa-minus-square "></i>
+								</a>
+							{{/if}}
+
+							<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3)>;
+								<i class="fas fa-plus-square "></i>
+							</a>
+
+							{{#gte start3 num}}
+								<i class="fas fa-arrow-square-right w3-opacity "></i>
+							{{else}}
+								<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1)>;
+									<i class="fas fa-arrow-square-right "></i>
+								</a>
+							{{/gte}}
+							<span>(start1 + 1), " - ", (start1 + rows1), " of ", num</span>
+						</div>
+						{{#block "table1SitePetGenPage"}}
+					</div>
+				{{/eq}}
+			{{else}}
+				<h1>
+					<a href="{{> htmlUrlSitePet}}" class="w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green">
+						{{#if contextIconCssClasses}}
 							<i class="contextIconCssClasses + " site-menu-icon "></i>
-						e("span class=\" \"").f()pageH1.g("span");
-					} g("a");
-				} g("h1");
-			}
-			e("div class=\"w3-padding-16 w3-card-4 w3-light-grey \">")			if(StringUtils.isNotEmpty(pageH2)) {
-				{ e("h2>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")						e("span class=\" \"").f()pageH2.g("span");
-					} g("span");
-				} g("h2");
-			}
-			if(StringUtils.isNotEmpty(pageH3)) {
-				{ e("h3>")					{ e("span").a("class", "w3-bar-item w3-padding w3-center w3-block w3-pale-green >")						e("span class=\" \"").f()pageH3.g("span");
-					} g("span");
-				} g("h3");
-			}
-		} else {
+						{{/if}}
+						<span class="">{{pageH1}}</span>
+					</a>
+				</h1>
+				<div class="">
+					<div>
 
-			{ e("h1>")				{ e("a").a("href", "/api/pet").a("class", "w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green >")					if(contextIconCssClasses != null)
-						<i class="contextIconCssClasses + " site-menu-icon "></i>
-					e("span class=\" \"").f()pageH1.g("span");
-				} g("a");
-			} g("h1");
-			{ e("div class=\"\">")				{ e("div>")					JsonObject queryParams = Optional.ofNullable(serviceRequest).map(ServiceRequest::getParams).map(or -> or.getJsonObject("query")).orElse(new JsonObject());
-					Long num = listSitePet_.getQueryResponse().getResults().getNumFound();
-					String q = "*:*";
-					String query1 = "objectText";
-					String query2 = "";
-					String query = "*:*";
-					for(String paramName : queryParams.fieldNames()) {
-						String entityVar = null;
-						String valueIndexed = null;
-						Object paramObjectValues = queryParams.getValue(paramName);
-						JsonArray paramObjects = paramObjectValues instanceof JsonArray ? (JsonArray)paramObjectValues : new JsonArray().add(paramObjectValues);
+						{{#if pagination.pagePrevious}}
+							<a href="{{> htmlUrlSitePet fq=start}}">
+								<i class="fas fa-arrow-square-left "></i>
+							</a>
+							{{else}}
+							<i class="fas fa-arrow-square-left w3-opacity "></i>
+						{{/if}}
 
-						try {
-							for(Object paramObject : paramObjects) {
-								switch(paramName) {
-									case "q":
-										q = (String)paramObject;
-										entityVar = StringUtils.trim(StringUtils.substringBefore((String)paramObject, ":"));
-										valueIndexed = URLDecoder.decode(StringUtils.trim(StringUtils.substringAfter((String)paramObject, ":")), "UTF-8");
-										query1 = entityVar.equals("*") ? query1 : entityVar;
-										query2 = valueIndexed;
-										query = query1 + ":" + query2;
-								}
-							}
-						} catch(Exception e) {
-							ExceptionUtils.rethrow(e);
-						}
-					}
+						if(rows1 <= 1) {
+							<i class="fas fa-minus-square w3-opacity "></i>
+						{{else}}
+							<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2)>;
+								<i class="fas fa-minus-square "></i>
+							</a>
+						{{/if}}
 
-					Integer rows1 = Optional.ofNullable(listSitePet_).map(l -> l.getRows()).orElse(10);
-					Integer start1 = Optional.ofNullable(listSitePet_).map(l -> l.getStart()).orElse(1);
-					Integer start2 = start1 - rows1;
-					Integer start3 = start1 + rows1;
-					Integer rows2 = rows1 / 2;
-					Integer rows3 = rows1 * 2;
-					start2 = start2 < 0 ? 0 : start2;
-					StringBuilder fqs = new StringBuilder();
-					for(String fq : Optional.ofNullable(listSitePet_).map(l -> l.getFilterQueries()).orElse(new String[0])) {
-						if(!StringUtils.contains(fq, "(")) {
-							String fq1 = StringUtils.substringBefore(fq, "_");
-							String fq2 = StringUtils.substringAfter(fq, ":");
-							if(!StringUtils.startsWithAny(fq, "classCanonicalNames_", "archived_", "deleted_", "sessionId", "userKeys"))
-								fqs.append("&fq=").append(fq1).append(":").append(fq2);
-						}
-					}
-					StringBuilder sorts = new StringBuilder();
-					for(SortClause sort : Optional.ofNullable(listSitePet_).map(l -> l.getSorts()).orElse(Arrays.asList())) {
-						sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
-					}
+						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3)>;
+							<i class="fas fa-plus-square "></i>
+						</a>
 
-					if(start1 == 0) {
-						e("i class=\"fas fa-arrow-square-left w3-opacity \"").f().g("i");
-					} else {
-						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start2, "&rows=", rows1)>;
-							e("i class=\"fas fa-arrow-square-left \"").f().g("i");
-						} g("a");
-					}
-
-					if(rows1 <= 1) {
-						e("i class=\"fas fa-minus-square w3-opacity \"").f().g("i");
-					} else {
-						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows2)>;
-							e("i class=\"fas fa-minus-square \"").f().g("i");
-						} g("a");
-					}
-
-					<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start1, "&rows=", rows3)>;
-						e("i class=\"fas fa-plus-square \"").f().g("i");
-					} g("a");
-
-					if(start3 >= num) {
-						e("i class=\"fas fa-arrow-square-right w3-opacity \"").f().g("i");
-					} else {
-						<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1)>;
-							e("i class=\"fas fa-arrow-square-right \"").f().g("i");
-						} g("a");
-					}
+						{{#gte start3 num}}
+							<i class="fas fa-arrow-square-right w3-opacity "></i>
+						{{else}}
+							<a.a("href", "/api/pet?q=", query, fqs, sorts, "&start=", start3, "&rows=", rows1)>;
+								<i class="fas fa-arrow-square-right "></i>
+							</a>
+						{{/gte}}
 						<span>(start1 + 1), " - ", (start1 + rows1), " of ", num</span>
-				} g("div");
-				table1SitePetGenPage();
-			} g("div");
-		}
+					</div>
+					{{#block "table1SitePetGenPage"}}
+				</div>
+			{{/eq}}
+		{{else}}
+			<h1>
+				<a href="{{> htmlUrlSitePet}}" class="w3-bar-item w3-btn w3-center w3-block w3-pale-green w3-hover-pale-green">
+					{{#if contextIconCssClasses}}
+						<i class="contextIconCssClasses site-menu-icon "></i>
+					{{/if}}
+					<span class="">pets</span>
+				</a>
+			<h1>
+			<div class="w3-padding-16 w3-card-4 w3-light-grey ">
+			<h2>
+				<span class="w3-bar-item w3-padding w3-center w3-block w3-pale-green">
+					{{#if contextIconCssClasses}}
+						<i class="contextIconCssClasses + " site-menu-icon "></i>
+					{{/if}}
+					<span class="">no pet found</span>
+				</span>
+			</h2>
+		{{/if}}
 
-		if(listSitePet_ != null && listSitePet_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
+		{{# if listSitePet_ != null && listSitePet_.size() == 1 && params.getJsonObject("query").getString("q").equals("*:*")) {
 			SitePet o = listSitePet_.first();
 
-			{ e("div class=\"\">")
+			div class="">
 				if(o.getPk() != null) {
-					{ e("form").a("action", "").a("id", "SitePetForm style=\"display: inline-block; width: 100%; \" onsubmit=\"event.preventDefault(); return false; \">")						e("input")
+					form action " idSitePetForm style="display: inline-block; width: 100%; " onsubmit="event.preventDefault(); return false; ">						<input
 						.a("name", "pk")
 						.a("class", "valuePk")
 						.a("type", "hidden")
 						.a("value", o.getPk())
 						.fg();
-						e("input")
+						<input
 						.a("name", "focusId")
 						.a("type", "hidden")
 						.fg();
@@ -920,35 +1027,35 @@
 	}
 
 {{#partial "table1SitePetGenPage"}}
-		{ e("table class=\"w3-table w3-bordered w3-striped w3-border w3-hoverable \">")			table2SitePetGenPage();
+		table class="w3-table w3-bordered w3-striped w3-border w3-hoverable ">			table2SitePetGenPage();
 		} g("table");
 	}
 
 {{#partial "table2SitePetGenPage"}}
-		thead1SitePetGenPage();
-		tbody1SitePetGenPage();
-		tfoot1SitePetGenPage();
-	}
+		{{#block "thead1SitePetGenPage"}}
+		{{#block "tbody1SitePetGenPage"}}
+		{{#block "tfoot1SitePetGenPage"}}
+	{{/partial}}
 
 {{#partial "thead1SitePetGenPage"}}
-		{ e("thead").a("class", "w3-pale-green w3-hover-pale-green >")			thead2SitePetGenPage();
+		thead class="w3-pale-green w3-hover-pale-green">			thead2SitePetGenPage();
 		} g("thead");
-	}
+	{{/partial}}
 
 {{#partial "thead2SitePetGenPage"}}
-			{ e("tr>")			if(getColumnCreated()) {
+			tr>			{{#if getColumnCreated}}
 				<th>"created"</th>
-			}
-			if(getColumnObjectTitle()) {
+			{{/if}}
+			{{#if getColumnObjectTitle}}
 				<th>""</th>
-			}
+			{{/if}}
 			} g("tr");
-	}
+	{{/partial}}
 
 {{#partial "tbody1SitePetGenPage"}}
-		{ e("tbody>")			tbody2SitePetGenPage();
+		tbody>			tbody2SitePetGenPage();
 		} g("tbody");
-	}
+	{{/partial}}
 
 {{#partial "tbody2SitePetGenPage"}}
 		Map<String, Map<String, List<String>>> highlighting = listSitePet_.getQueryResponse().getHighlighting();
@@ -958,47 +1065,42 @@
 			List<String> highlightList = highlights == null ? null : highlights.get(highlights.keySet().stream().findFirst().orElse(null));
 			String uri = "/api/pet/" + o.getPk();
 			<tr>;
-				if(getColumnCreated()) {
-					<td>;
-						<a href="{{uri}}")>
-							<span>;
-								sx(o.strCreated());
-							} g("span");
-						} g("a");
+				{{#if getColumnCreated}}
+					<td>
+						<a href="{{uri}}">
+							<span>{{strCreated}}</span>
+						</a>
 					} g("td");
-				}
-				if(getColumnObjectTitle()) {
-					<td>;
-						<a href="{{uri}}")>
-							<i
-.a("class", "fas fa-dog ").f().g("i");
-							<span>;
-								sx(o.strObjectTitle());
-							} g("span");
-						} g("a");
+				{{/if}}
+				{{#if getColumnObjectTitle}}
+					<td>
+						<a href="{{uri}}">
+							<i class="fas fa-dog "></i>
+							<span>{{strObjectTitle}}</span>
+						</a>
 					} g("td");
-				}
+				{{/if}}
 			} g("tr");
 		}
-	}
+	{{/partial}}
 
 {{#partial "tfoot1SitePetGenPage"}}
-		{ e("tfoot").a("class", "w3-pale-green w3-hover-pale-green >")			tfoot2SitePetGenPage();
+		tfoot class="w3-pale-green w3-hover-pale-green">			tfoot2SitePetGenPage();
 		} g("tfoot");
-	}
+	{{/partial}}
 
 {{#partial "tfoot2SitePetGenPage"}}
-		{ e("tr>")			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listSitePet_.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
-			if(getColumnCreated()) {
-				<td>;
-				g("td");
-			}
-			if(getColumnObjectTitle()) {
-				<td>;
-				g("td");
-			}
+		tr>			SimpleOrderedMap facets = (SimpleOrderedMap)Optional.ofNullable(listSitePet_.getQueryResponse()).map(QueryResponse::getResponse).map(r -> r.get("facets")).orElse(new SimpleOrderedMap());
+			{{#if getColumnCreated}}
+				<td>
+				</td>
+			{{/if}}
+			{{#if getColumnObjectTitle}}
+				<td>
+				</td>
+			{{/if}}
 		} g("tr");
-	}
+	{{/partial}}
 
 	public Boolean getColumnCreated() {
 		return true;
@@ -1009,44 +1111,42 @@
 	}
 
 {{#partial "htmlBodyFormsSitePetGenPage"}}
-		if(
+		{{# if 
 				CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), ROLES)
 				|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), ROLES)
 				) {
 
-			if(listSitePet_ != null && listSitePet_.size() == 1) {
-				{ e("button")
-					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			{{# if listSitePet_ != null && listSitePet_.size() == 1) {
+				button
+					.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 						.a("id", "refreshThisSitePetGenPage")
-						 onclick=""patchSitePetVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisSitePetGenPage')); }, function() { addError($('#refreshThisSitePetGenPage')); }); return false; ">						e("i class=\"fas fa-sync-alt \"").f().g("i");
-					sx("refresh this pet");
+						 onclick=""patchSitePetVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshThisSitePetGenPage')); }, function() { addError($('#refreshThisSitePetGenPage')); }); return false; ">						<i class="fas fa-sync-alt "></i>					sx("refresh this pet");
 				} g("button");
 			}
 		}
-		if(
+		{{# if 
 				siteRequest_.getUserResourceRoles().contains("SiteAdmin")
 				|| siteRequest_.getUserRealmRoles().contains("SiteAdmin")
 				) {
 
-			{ e("button")
-				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			button
+				.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 				.a("onclick", "$('#putimportSitePetModal').show(); ")
 				.f();
-				e("i class=\"fas fa-file-import \"").f().g("i");
-				sx("Import pets");
+				<i class="fas fa-file-import "></i>				sx("Import pets");
 			} g("button");
-			{ e("div").a("id", "putimportSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putimportSitePetModal').hide(); ").f().sx("×").g("span");
-							e("h2 class=\"w3-padding \"").f().sx("Import pets").g("h2");
+			div idputimportSitePetModal " class="w3-modal w3-padding-32">				div class="w3-modal-content ">					div class="w3-card-4 ">						header class="w3-container w3-pale-green">							<span class="w3-button w3-display-topright " onclick$('#putimportSitePetModal').hide(); .f().sx("×").g("span");
+							<h2 class="w3-padding ".f().sx("Import pets").g("h2");
 						} g("header");
-						{ e("div class=\"w3-container \"").a("id", "putimportSitePetFormValues").f();
+						div class="w3-container " idputimportSitePetFormValues.f();
 							SitePet o = new SitePet();
 							o.setSiteRequest_(siteRequest_);
 
 							// Form PUT
-							{ e("div").a("id", "putimportSitePetForm>")								htmlFormPUTImportSitePet(o);
+							div idputimportSitePetForm>								htmlFormPUTImportSitePet(o);
 							} g("div");
-							e("button")
-								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+							<button
+								.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-", "pale-green ")
 								 onclick=""putimportSitePet($('#putimportSitePetForm')); "
 								.f().sx("Import pets")
 							.g("button");
@@ -1057,25 +1157,24 @@
 			} g("div");
 
 
-			{ e("button")
-				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			button
+				.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 				.a("onclick", "$('#putmergeSitePetModal').show(); ")
 				.f();
-				e("i class=\"fas fa-code-merge \"").f().g("i");
-				sx("Merge pets");
+				<i class="fas fa-code-merge "></i>				sx("Merge pets");
 			} g("button");
-			{ e("div").a("id", "putmergeSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putmergeSitePetModal').hide(); ").f().sx("×").g("span");
-							e("h2 class=\"w3-padding \"").f().sx("Merge pets").g("h2");
+			div idputmergeSitePetModal " class="w3-modal w3-padding-32">				div class="w3-modal-content ">					div class="w3-card-4 ">						header class="w3-container w3-pale-green">							<span class="w3-button w3-display-topright " onclick$('#putmergeSitePetModal').hide(); .f().sx("×").g("span");
+							<h2 class="w3-padding ".f().sx("Merge pets").g("h2");
 						} g("header");
-						{ e("div class=\"w3-container \"").a("id", "putmergeSitePetFormValues").f();
+						div class="w3-container " idputmergeSitePetFormValues.f();
 							SitePet o = new SitePet();
 							o.setSiteRequest_(siteRequest_);
 
 							// Form PUT
-							{ e("div").a("id", "putmergeSitePetForm>")								htmlFormPUTMergeSitePet(o);
+							div idputmergeSitePetForm>								htmlFormPUTMergeSitePet(o);
 							} g("div");
-							e("button")
-								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+							<button
+								.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-", "pale-green ")
 								 onclick=""putmergeSitePet($('#putmergeSitePetForm')); "
 								.f().sx("Merge pets")
 							.g("button");
@@ -1086,25 +1185,24 @@
 			} g("div");
 
 
-			{ e("button")
-				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			button
+				.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 				.a("onclick", "$('#putcopySitePetModal').show(); ")
 				.f();
-				e("i class=\"fas fa-copy \"").f().g("i");
-				sx("Duplicate pets");
+				<i class="fas fa-copy "></i>				sx("Duplicate pets");
 			} g("button");
-			{ e("div").a("id", "putcopySitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#putcopySitePetModal').hide(); ").f().sx("×").g("span");
-							e("h2 class=\"w3-padding \"").f().sx("Duplicate pets").g("h2");
+			div idputcopySitePetModal " class="w3-modal w3-padding-32">				div class="w3-modal-content ">					div class="w3-card-4 ">						header class="w3-container w3-pale-green">							<span class="w3-button w3-display-topright " onclick$('#putcopySitePetModal').hide(); .f().sx("×").g("span");
+							<h2 class="w3-padding ".f().sx("Duplicate pets").g("h2");
 						} g("header");
-						{ e("div class=\"w3-container \"").a("id", "putcopySitePetFormValues").f();
+						div class="w3-container " idputcopySitePetFormValues.f();
 							SitePet o = new SitePet();
 							o.setSiteRequest_(siteRequest_);
 
 							// Form PUT
-							{ e("div").a("id", "putcopySitePetForm>")								htmlFormPUTCopySitePet(o);
+							div idputcopySitePetForm>								htmlFormPUTCopySitePet(o);
 							} g("div");
-							e("button")
-								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+							<button
+								.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-", "pale-green ")
 								 onclick=""putcopySitePet($('#putcopySitePetForm'), ", sitePet_ == null ? "null" : sitePet_.getPk(), "; ")
 								.f().sx("Duplicate pets")
 							.g("button");
@@ -1115,25 +1213,24 @@
 			} g("div");
 
 
-			{ e("button")
-				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			button
+				.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 				.a("onclick", "$('#postSitePetModal').show(); ")
 				.f();
-				e("i class=\"fas fa-file-plus \"").f().g("i");
-				sx("Create a pet");
+				<i class="fas fa-file-plus "></i>				sx("Create a pet");
 			} g("button");
-			{ e("div").a("id", "postSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#postSitePetModal').hide(); ").f().sx("×").g("span");
-							e("h2 class=\"w3-padding \"").f().sx("Create a pet").g("h2");
+			div idpostSitePetModal " class="w3-modal w3-padding-32">				div class="w3-modal-content ">					div class="w3-card-4 ">						header class="w3-container w3-pale-green">							<span class="w3-button w3-display-topright " onclick$('#postSitePetModal').hide(); .f().sx("×").g("span");
+							<h2 class="w3-padding ".f().sx("Create a pet").g("h2");
 						} g("header");
-						{ e("div class=\"w3-container \"").a("id", "postSitePetFormValues").f();
+						div class="w3-container " idpostSitePetFormValues.f();
 							SitePet o = new SitePet();
 							o.setSiteRequest_(siteRequest_);
 
 							// Form POST
-							{ e("div").a("id", "postSitePetForm>")								htmlFormPOSTSitePet(o);
+							div idpostSitePetForm>								htmlFormPOSTSitePet(o);
 							} g("div");
-							e("button")
-								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+							<button
+								.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-", "pale-green ")
 								 onclick=""postSitePet($('#postSitePetForm')); "
 								.f().sx("Create a pet")
 							.g("button");
@@ -1144,23 +1241,22 @@
 			} g("div");
 
 
-			{ e("button")
-				.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ")
+			button
+				.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-", "pale-green ")
 				.a("onclick", "$('#patchSitePetModal').show(); ")
 				.f();
-				e("i class=\"fas fa-edit \"").f().g("i");
-				sx("Modify pets");
+				<i class="fas fa-edit "></i>				sx("Modify pets");
 			} g("button");
-			{ e("div").a("id", "patchSitePetModal").a("class", "w3-modal w3-padding-32 >")				{ e("div class=\"w3-modal-content \">")					{ e("div class=\"w3-card-4 \">")						{ e("header").a("class", "w3-container w3-pale-green >")							e("span class=\"w3-button w3-display-topright \"").a("onclick", "$('#patchSitePetModal').hide(); ").f().sx("×").g("span");
-							e("h2 class=\"w3-padding \"").f().sx("Modify pets").g("h2");
+			div idpatchSitePetModal " class="w3-modal w3-padding-32">				div class="w3-modal-content ">					div class="w3-card-4 ">						header class="w3-container w3-pale-green">							<span class="w3-button w3-display-topright " onclick$('#patchSitePetModal').hide(); .f().sx("×").g("span");
+							<h2 class="w3-padding ".f().sx("Modify pets").g("h2");
 						} g("header");
-						{ e("div class=\"w3-container \"").a("id", "patchSitePetFormValues").f();
+						div class="w3-container " idpatchSitePetFormValues.f();
 							SitePet o = new SitePet();
 							o.setSiteRequest_(siteRequest_);
 
 							htmlFormPATCHSitePet(o);
-							e("button")
-								.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-pale-green ")
+							<button
+								.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-margin w3-", "pale-green ")
 								 onclick=""patchSitePet(null, $('#patchSitePetFormValues'), ", Optional.ofNullable(sitePet_).map(SitePet::getPk).map(a -> a.toString()).orElse("null", ", function() {}, function() {}); ")
 								.f().sx("Modify pets")
 							.g("button");
@@ -1227,22 +1323,21 @@
 				sorts.append("&sort=").append(StringUtils.substringBefore(sort.getItem(), "_")).append(" ").append(sort.getOrder().name());
 			}
 
-			if(
+			{{# if 
 					CollectionUtils.containsAny(siteRequest_.getUserResourceRoles(), SitePetGenPage.ROLES)
 					|| CollectionUtils.containsAny(siteRequest_.getUserRealmRoles(), SitePetGenPage.ROLES)
 					) {
-					{ p.e("div class=\"\">")						{ p.e("button").a("id", "refreshAllSitePetGenPage", id).a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green ") onclick=""patchSitePetVals([], {}, function() { addGlow($('#refreshAllSitePetGenPage", id, "')); }, function() { addError($('#refreshAllSitePetGenPage", id, "')); }); ".f();
-							p.e("i class=\"fas fa-sync-alt \"").f().g("i");
-							p.sx("refresh all the pets");
+					{ p.<div class="">						{ p.<button.a("id", "refreshAllSitePetGenPage", id) class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-pale-green  onclick=""patchSitePetVals([], {}, function() { addGlow($('#refreshAllSitePetGenPage", id, "')); }, function() { addError($('#refreshAllSitePetGenPage", id, "')); }); ".f();
+							p.<i class="fas fa-sync-alt "></i>							p.sx("refresh all the pets");
 						} p.g("button");
 					} p.g("div");
 			}
-			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell \">")					{ p.e("span>")						p.sx("search pets: ");
+			{ p.<div class="w3-cell-row ">				{ p.<div class="w3-cell ">					{ p.<span>						p.sx("search pets: ");
 					} p.g("span");
 				} p.g("div");
 			} p.g("div");
-			{ p.e("div class=\"w3-bar \">")
-				p.e("input")
+			{ p.<div class="w3-bar ">
+				p.<input
 					.a("type", "text")
 					.a("class", "suggestSitePet w3-input w3-border w3-bar-item ")
 					.a("name", "suggestSitePet")
@@ -1250,26 +1345,24 @@
 					.a("autocomplete", "off")
 					 oninput=""suggestSitePetObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListSitePet", id, "'), ", p.getSiteRequest_().getRequestPk(), "; ")
 					 onkeyup=""if (event.keyCode === 13) { event.preventDefault(); window.location.href = '/api/pet?q=", query1, ":' + encodeURIComponent(this.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; }"; 
-				if(listSitePet_ != null)
+				{{# if listSitePet_}}
 					p.a("value", query2);
 				p.fg();
-				{ p.e("button")
-					.a("class", "w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-pale-green ")
+				{ p.<button
+					.a("class=\"w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3-", "pale-green ")
 					 onclick=""window.location.href = '/api/pet?q=", query1, ":' + encodeURIComponent(this.previousElementSibling.value) + '", fqs, sorts, "&start=", start2, "&rows=", rows1, "'; " 
 					.f();
-					p.e("i class=\"fas fa-search \"").f().g("i");
-				} p.g("button");
+					p.<i class="fas fa-search "></i>				} p.g("button");
 
 			} p.g("div");
-			{ p.e("div class=\"w3-cell-row \">")				{ p.e("div class=\"w3-cell w3-left-align w3-cell-top \">")					{ p.e("ul class=\"w3-ul w3-hoverable \"").a("id", "suggestListSitePet", id)>					} p.g("ul");
+			{ p.<div class="w3-cell-row ">				{ p.<div class="w3-cell w3-left-align w3-cell-top ">					{ p.<ul class="w3-ul w3-hoverable ".a("id", "suggestListSitePet", id)>					} p.g("ul");
 				} p.g("div");
 			} p.g("div");
-			{ p.e("div class=\"\">")				{ p.e("a").a("href", "/api/pet").a("class", ">")					p.e("i").a("class", "fas fa-dog ").f().g("i");
-					p.sx("see all the pets");
+			{ p.<div class="">				{ p.<a href/api/pet " class=">					p.<i class="fas fa-dog ></i>					p.sx("see all the pets");
 				} p.g("a");
 			} p.g("div");
 		} catch(Exception e) {
 			ExceptionUtils.rethrow(e);
 		}
-	}
+	{{/partial}}
 
