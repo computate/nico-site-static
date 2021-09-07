@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" href="http://localhost:10781/static/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nico pet sitting</title>
+<link rel="stylesheet" href="http://localhost:10781/static/css/w3.css" />
+<link rel="stylesheet" href="http://localhost:10781/static/css/site-enUS.css" />
+<script src="http://localhost:10781/static/js/jquery-1.12.4.min.js"></script>
+<script src="https://kit.fontawesome.com/59d19567d5.js"></script>
+<script src="http://localhost:10781/static/js/site-enUS.js"></script>
+<script src="http://localhost:10781/static/js/moment.min.js"></script>
+<script src="http://localhost:10781/static/js/jqDatePicker.js"></script>
+<script src="http://localhost:10781/static/js/enUS/PetPage.js"></script>
+<script src="http://localhost:10781/static/js/sockjs.js"></script>
+<script src="http://localhost:10781/static/js/vertx-eventbus.js"></script>
+<script src="http://localhost:10781/static/js/enUS/EnrollmentPage.js"></script>
+{{#block "htmlHead"}}
+{{/block}}
+</head>
+<body class="w3-light-gray " style="height: 100%;">
+	<div class="w3-center w3-white ">
+		<div class="w3-top w3-red ">
+			<div class="site-menu-custom w3-bar w3-text-black w3-padding-bottom-8 w3-padding-top-8 font-weight-bold " style="padding-left: 16px; padding-right: 16px; font-family: Overlock;">
+				<div class="w3-bar-item w3-btn grow-50 ">
+					<a class="text-decoration-none " href="/"><i class="far fa-home "></i> Home</a>
+				</div>
+				<a href="https://nico-dev.computate.org:10780#animals" class="w3-bar-item w3-btn grow-50 "><i class="fad fa-dog-leashed"></i> Animals</a> <a href="https://nico-dev.computate.org:10780#about"
+					class="w3-bar-item w3-btn grow-50 "><i class="fad fa-info-circle"></i>About</a> <a href="https://nico-dev.computate.org:10780#pricing" class="w3-bar-item w3-btn grow-50"><i
+					class="fad fa-usd-square"></i> Pricing</a> <a href="https://nico-dev.computate.org:10780#contact" class="w3-bar-item w3-btn grow-50"><i class="fad fa-phone-office"></i> Contact</a>
+
+				<div class="site-bar-item w3-bar-item ">
+					<a class="w3-padding " href="/user"><span class="site-menu-item"><i class="fad fa-house-user "></i>login</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{{#block "htmlBody"}}
+{{/block}}
+</body>
+</html>
