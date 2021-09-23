@@ -19,133 +19,6 @@ function putimportSitePetVals(json, success, error) {
 	});
 }
 
-// PUTMerge //
-
-async function putmergeSitePet($formValues, pk, success, error) {
-	var json = $formValues.find('.PUTMerge_list').val();
-	if(json != null && json !== '')
-		putmergeSitePetVals(JSON.parse(json), success, error);
-}
-
-function putmergeSitePetVals(json, success, error) {
-	$.ajax({
-		url: '/api/pet/merge'
-		, dataType: 'json'
-		, type: 'PUT'
-		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify(json)
-		, success: success
-		, error: error
-	});
-}
-
-// PUTCopy //
-
-async function putcopySitePet($formValues, pk, success, error) {
-	var vals = {};
-
-	var valuePk = $formValues.find('.valuePk').val();
-	if(valuePk != null && valuePk !== '')
-		vals['pk'] = valuePk;
-
-	var valueCreated = $formValues.find('.valueCreated').val();
-	if(valueCreated != null && valueCreated !== '')
-		vals['created'] = valueCreated;
-
-	var valueModified = $formValues.find('.valueModified').val();
-	if(valueModified != null && valueModified !== '')
-		vals['modified'] = valueModified;
-
-	var valueObjectId = $formValues.find('.valueObjectId').val();
-	if(valueObjectId != null && valueObjectId !== '')
-		vals['objectId'] = valueObjectId;
-
-	var valueArchived = $formValues.find('.valueArchived').val();
-	if(valueArchived != null && valueArchived !== '')
-		vals['archived'] = valueArchived == 'true';
-
-	var valueDeleted = $formValues.find('.valueDeleted').val();
-	if(valueDeleted != null && valueDeleted !== '')
-		vals['deleted'] = valueDeleted == 'true';
-
-	var valuePetName = $formValues.find('.valuePetName').val();
-	if(valuePetName != null && valuePetName !== '')
-		vals['petName'] = valuePetName;
-
-	var valuePetFoodAmount = $formValues.find('.valuePetFoodAmount').val();
-	if(valuePetFoodAmount != null && valuePetFoodAmount !== '')
-		vals['petFoodAmount'] = valuePetFoodAmount;
-
-	var valueEnrollmentKeys = $formValues.find('input.valueEnrollmentKeys:checked').val();
-	var valueEnrollmentKeysClear = $formValues.find('input.enrollmentKeys_clear:checked').val();
-	if(valueEnrollmentKeysClear != null && valueEnrollmentKeysClear)
-		vals['enrollmentKeys'] = null;
-	else if(valueEnrollmentKeys != null && valueEnrollmentKeys)
-		vals['enrollmentKeys'] = [valueEnrollmentKeys];
-
-	var valuePetFood = $formValues.find('.valuePetFood').val();
-	if(valuePetFood != null && valuePetFood !== '')
-		vals['petFood'] = valuePetFood;
-
-	var valuePetSick = $formValues.find('.valuePetSick').val();
-	if(valuePetSick != null && valuePetSick !== '')
-		vals['petSick'] = valuePetSick == 'true';
-
-	var valuePetMedNote = $formValues.find('.valuePetMedNote').val();
-	if(valuePetMedNote != null && valuePetMedNote !== '')
-		vals['petMedNote'] = valuePetMedNote;
-
-	var valuePetTrouble = $formValues.find('.valuePetTrouble').val();
-	if(valuePetTrouble != null && valuePetTrouble !== '')
-		vals['petTrouble'] = valuePetTrouble;
-
-	var valueSendpdates = $formValues.find('.valueSendpdates').val();
-	if(valueSendpdates != null && valueSendpdates !== '')
-		vals['sendpdates'] = valueSendpdates == 'true';
-
-	var valuePetAmount = $formValues.find('.valuePetAmount').val();
-	if(valuePetAmount != null && valuePetAmount !== '')
-		vals['petAmount'] = valuePetAmount;
-
-	var valueUserKeys = $formValues.find('.valueUserKeys').val();
-	if(valueUserKeys != null && valueUserKeys !== '')
-		vals['userKeys'] = valueUserKeys;
-
-	var valueInheritPk = $formValues.find('.valueInheritPk').val();
-	if(valueInheritPk != null && valueInheritPk !== '')
-		vals['inheritPk'] = valueInheritPk;
-
-	var valueSessionId = $formValues.find('.valueSessionId').val();
-	if(valueSessionId != null && valueSessionId !== '')
-		vals['sessionId'] = valueSessionId;
-
-	var valueUserId = $formValues.find('.valueUserId').val();
-	if(valueUserId != null && valueUserId !== '')
-		vals['userId'] = valueUserId;
-
-	var valueUserKey = $formValues.find('.valueUserKey').val();
-	if(valueUserKey != null && valueUserKey !== '')
-		vals['userKey'] = valueUserKey;
-
-	var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
-	if(valueObjectTitle != null && valueObjectTitle !== '')
-		vals['objectTitle'] = valueObjectTitle;
-
-	putcopySitePetVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
-}
-
-function putcopySitePetVals(filters, vals, success, error) {
-	$.ajax({
-		url: '/api/pet/copy?' + $.param(filters)
-		, dataType: 'json'
-		, type: 'PUT'
-		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify({patch: vals})
-		, success: success
-		, error: error
-	});
-}
-
 // POST //
 
 async function postSitePet($formValues, success, error) {
@@ -196,11 +69,8 @@ async function postSitePet($formValues, success, error) {
 	if(valuePetFoodAmount != null && valuePetFoodAmount !== '')
 		vals['petFoodAmount'] = valuePetFoodAmount;
 
-	var valueEnrollmentKeys = [];
-	$formValues.find('input.valueEnrollmentKeys:checked').each(function(index) {
-		valueEnrollmentKeys.push($(this).val());
-	});
-	if(valueEnrollmentKeys.length > 0)
+	var valueEnrollmentKeys = $formValues.find('.valueEnrollmentKeys').val();
+	if(valueEnrollmentKeys != null && valueEnrollmentKeys !== '')
 		vals['enrollmentKeys'] = valueEnrollmentKeys;
 
 	var valuePetFood = $formValues.find('.valuePetFood').val();
@@ -385,9 +255,17 @@ async function patchSitePet($formFilters, $formValues, pk, success, error) {
 	if(removePetFoodAmount != null && removePetFoodAmount !== '')
 		vals['removePetFoodAmount'] = removePetFoodAmount;
 
-	var valueEnrollmentKeys = $formValues.find('input.valueEnrollmentKeys:checked').val();
-	if(valueEnrollmentKeys != null && valueEnrollmentKeys !== '')
-		vals['addEnrollmentKeys'] = valueEnrollmentKeys;
+	var valueEnrollmentKeys = $formValues.find('.valueEnrollmentKeys').val();
+	var removeEnrollmentKeys = $formValues.find('.removeEnrollmentKeys').val() === 'true';
+	var setEnrollmentKeys = removeEnrollmentKeys ? null : $formValues.find('.setEnrollmentKeys').val();
+	var addEnrollmentKeys = $formValues.find('.addEnrollmentKeys').val();
+	if(removeEnrollmentKeys || setEnrollmentKeys != null && setEnrollmentKeys !== '')
+		vals['setEnrollmentKeys'] = setEnrollmentKeys;
+	if(addEnrollmentKeys != null && addEnrollmentKeys !== '')
+		vals['addEnrollmentKeys'] = addEnrollmentKeys;
+	var removeEnrollmentKeys = $formValues.find('.removeEnrollmentKeys').val();
+	if(removeEnrollmentKeys != null && removeEnrollmentKeys !== '')
+		vals['removeEnrollmentKeys'] = removeEnrollmentKeys;
 
 	var valuePetFood = $formValues.find('.valuePetFood').val();
 	var removePetFood = $formValues.find('.removePetFood').val() === 'true';
@@ -927,42 +805,6 @@ function suggestSitePetObjectSuggest($formFilters, $list) {
 	searchSitePetVals($formFilters, success, error);
 }
 
-function suggestSitePetEnrollmentKeys(filters, $list, pk = null, attribute=true) {
-	success = function( data, textStatus, jQxhr ) {
-		$list.empty();
-		$.each(data['list'], function(i, o) {
-			var $i = $('<i>').attr('class', 'fa fa-clipboard-list ');
-			var $span = $('<span>').attr('class', '').text(o['objectTitle']);
-			var $a = $('<a>').attr('id', o['pk']).attr('href', o['pageUrlPk']);
-			$a.append($i);
-			$a.append($span);
-			var val = o['petKeys'];
-			var checked = pk == null ? false : Array.isArray(val) ? val.includes(pk.toString()) : val == pk;
-			var $input = $('<input>');
-			$input.attr('id', 'GET_enrollmentKeys_' + pk + '_petKeys_' + o['pk']);
-			$input.attr('value', o['pk']);
-			$input.attr('class', 'valueEnrollmentKeys w3-check ');
-			if(pk != null) {
-				$input.attr('onchange', "var $input = $('#GET_enrollmentKeys_" + pk + "_petKeys_" + o['pk'] + "'); patchSitePetVals([{ name: 'fq', value: 'pk:" + pk + "' }], { [($input.prop('checked') ? 'add' : 'remove') + 'EnrollmentKeys']: \"" + o['pk'] + "\" } ); ");
-				$input.attr('onclick', 'removeGlow($(this)); ');
-			}
-			$input.attr('type', 'checkbox');
-			if(checked)
-				$input.attr('checked', 'checked');
-			var $li = $('<li>');
-			if(attribute)
-				$li.append($input);
-			$li.append($a);
-			$list.append($li);
-		});
-		var focusId = $('#SitePetForm :input[name="focusId"]').val();
-		if(focusId)
-			$('#' + focusId).parent().next().find('input').focus();
-	};
-	error = function( jqXhr, textStatus, errorThrown ) {};
-	searchSiteEnrollmentVals(filters, success, error);
-}
-
 // AdminSearch //
 
 async function adminsearchSitePet($formFilters, success, error) {
@@ -1160,42 +1002,6 @@ function suggestSitePetObjectSuggest($formFilters, $list) {
 	searchSitePetVals($formFilters, success, error);
 }
 
-function suggestSitePetEnrollmentKeys(filters, $list, pk = null, attribute=true) {
-	success = function( data, textStatus, jQxhr ) {
-		$list.empty();
-		$.each(data['list'], function(i, o) {
-			var $i = $('<i>').attr('class', 'fa fa-clipboard-list ');
-			var $span = $('<span>').attr('class', '').text(o['objectTitle']);
-			var $a = $('<a>').attr('id', o['pk']).attr('href', o['pageUrlPk']);
-			$a.append($i);
-			$a.append($span);
-			var val = o['petKeys'];
-			var checked = pk == null ? false : Array.isArray(val) ? val.includes(pk.toString()) : val == pk;
-			var $input = $('<input>');
-			$input.attr('id', 'GET_enrollmentKeys_' + pk + '_petKeys_' + o['pk']);
-			$input.attr('value', o['pk']);
-			$input.attr('class', 'valueEnrollmentKeys w3-check ');
-			if(pk != null) {
-				$input.attr('onchange', "var $input = $('#GET_enrollmentKeys_" + pk + "_petKeys_" + o['pk'] + "'); patchSitePetVals([{ name: 'fq', value: 'pk:" + pk + "' }], { [($input.prop('checked') ? 'add' : 'remove') + 'EnrollmentKeys']: \"" + o['pk'] + "\" } ); ");
-				$input.attr('onclick', 'removeGlow($(this)); ');
-			}
-			$input.attr('type', 'checkbox');
-			if(checked)
-				$input.attr('checked', 'checked');
-			var $li = $('<li>');
-			if(attribute)
-				$li.append($input);
-			$li.append($a);
-			$list.append($li);
-		});
-		var focusId = $('#SitePetForm :input[name="focusId"]').val();
-		if(focusId)
-			$('#' + focusId).parent().next().find('input').focus();
-	};
-	error = function( jqXhr, textStatus, errorThrown ) {};
-	searchSiteEnrollmentVals(filters, success, error);
-}
-
 async function websocketSitePet(success) {
 	window.eventBus.onopen = function () {
 
@@ -1242,20 +1048,6 @@ async function websocketSitePet(success) {
 				if(success)
 					success(json);
 			}
-		});
-
-		window.eventBus.registerHandler('websocketSiteEnrollment', function (error, message) {
-			$('#Page_enrollmentKeys').trigger('oninput');
-			$('#Page_enrollmentKeys_add').text('add an enrollment');
-			$('#Page_enrollmentKeys_add').removeClass('w3-disabled');
-			$('#Page_enrollmentKeys_add').attr('disabled', false);
-		});
-
-		window.eventBus.registerHandler('websocketSiteEnrollment', function (error, message) {
-			$('#Page_enrollmentKeys').trigger('oninput');
-			$('#Page_enrollmentKeys_add').text('add an enrollment');
-			$('#Page_enrollmentKeys_add').removeClass('w3-disabled');
-			$('#Page_enrollmentKeys_add').attr('disabled', false);
 		});
 	}
 }

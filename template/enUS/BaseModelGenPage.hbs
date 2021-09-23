@@ -1,0 +1,745 @@
+{{#*inline "htmTitleBaseModelPage"}}		<!-- inline "htmTitleBaseModelPage" -->
+		<title>{{#if listBaseModel_}}{{#eq baseModelCount int1}}{{#eq params.query.q "*:*"}}{{else}}{{/eq}}{{else}}{{/eq}}{{else}}{{/if}}</title>
+{{/inline}}
+{{#*inline "htmMetaBaseModelPage"}}{{> "htmMetaPageLayout"}}{{/inline}}
+{{#*inline "htmStyleBaseModelPage"}}{{> "htmStylePageLayout"}}{{/inline}}
+{{#*inline "htmScriptsBaseModelPage"}}{{> "htmScriptsPageLayout"}}		<!-- inline "htmScriptsBaseModelPage" -->
+		<script src="staticBaseUrl/js/enUS/BaseModelPage.js"></script>
+{{/inline}}
+{{#*inline "htmScriptBaseModelPage"}}		<!-- inline "htmScriptBaseModelPage" -->
+			$(document).ready(function() {
+				document.onkeydown = function(evt) {
+					evt = evt || window.event;
+					var isEscape = false;
+					if ('key' in evt) {
+						isEscape = (evt.key === 'Escape' || evt.key === 'Esc');
+					} else {
+						isEscape = (evt.keyCode === 27);
+					}
+					if (isEscape) {
+						$('.w3-modal:visible').hide();
+					}
+				};
+				window.eventBus = new EventBus('/eventbus');
+				var pk = ", Optional.ofNullable(siteRequest_.getRequestPk()).map(l -> l.toString()).orElse("null"), ";
+				if(pk != null) {
+				}
+				websocketBaseModel(websocketBaseModelInner);
+			});
+{{/inline}}
+{{#*inline "htmFormPageBaseModel"}}
+		<div class="w3-cell-row ">
+			{{> "htmPk" classApiMethodMethod="Page"}}
+			{{> "htmCreated" classApiMethodMethod="Page"}}
+			{{> "htmModified" classApiMethodMethod="Page"}}
+			{{> "htmObjectId" classApiMethodMethod="Page"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmArchived" classApiMethodMethod="Page"}}
+			{{> "htmDeleted" classApiMethodMethod="Page"}}
+		</div>
+{{/inline}}
+{{#*inline "htmFormPOSTBaseModel"}}
+		<div class="w3-cell-row ">
+			{{> "htmPk" classApiMethodMethod="POST"}}
+			{{> "htmCreated" classApiMethodMethod="POST"}}
+			{{> "htmModified" classApiMethodMethod="POST"}}
+			{{> "htmObjectId" classApiMethodMethod="POST"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmArchived" classApiMethodMethod="POST"}}
+			{{> "htmDeleted" classApiMethodMethod="POST"}}
+		</div>
+{{/inline}}
+{{#*inline "htmFormPUTImportBaseModel"}}
+		<div class="w3-cell-row ">
+			<textarea
+				class="PUTImport_list w3-input w3-border "
+				style="height: 400px; "
+				placeholder="{ 'list': [ { 'pk': ... , 'saves': [ ... ] }, ... ] }"
+				></textarea>
+		</div>
+{{/inline}}
+{{#*inline "htmFormPUTMergeBaseModel"}}
+		<div class="w3-cell-row ">
+			<textarea
+				class="PUTPUTMerge_list w3-input w3-border "
+				style="height: 400px; "
+				placeholder="{ 'list': [ { 'pk': ... , 'saves': [ ... ] }, ... ] }"
+				></textarea>
+		</div>
+{{/inline}}
+{{#*inline "htmFormPUTCopyBaseModel"}}
+		<div class="w3-cell-row ">
+			{{> "htmCreated" classApiMethodMethod="PUTCopy"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmArchived" classApiMethodMethod="PUTCopy"}}
+			{{> "htmDeleted" classApiMethodMethod="PUTCopy"}}
+		</div>
+{{/inline}}
+{{#*inline "htmFormPATCHBaseModel"}}
+		<div class="w3-cell-row ">
+			{{> "htmCreated" classApiMethodMethod="PATCH"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmArchived" classApiMethodMethod="PATCH"}}
+			{{> "htmDeleted" classApiMethodMethod="PATCH"}}
+		</div>
+{{/inline}}
+{{#*inline "htmFormSearchBaseModel"}}
+		<div class="w3-cell-row ">
+			{{> "htmPk" classApiMethodMethod="Search"}}
+			{{> "htmCreated" classApiMethodMethod="Search"}}
+			{{> "htmModified" classApiMethodMethod="Search"}}
+			{{> "htmObjectId" classApiMethodMethod="Search"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmArchived" classApiMethodMethod="Search"}}
+			{{> "htmDeleted" classApiMethodMethod="Search"}}
+		</div>
+		<div class="w3-cell-row ">
+			{{> "htmInheritPk" classApiMethodMethod="Search"}}
+			{{> "htmSessionId" classApiMethodMethod="Search"}}
+			{{> "htmUserId" classApiMethodMethod="Search"}}
+			{{> "htmUserKey" classApiMethodMethod="Search"}}
+			{{> "htmObjectTitle" classApiMethodMethod="Search"}}
+		</div>
+{{/inline}}
+{{#*inline "htmUrlBaseModel"}}{{pageUri}}?q={{query.q}}&rows={{#if rows}}{{rows}}{{else}}{{pagination.rows}}{{/if}}&start={{#if start}}{{start}}{{else}}{{pagination.start}}{{/if}}{{#each query.fq}}{{#eq fq this}}{{else}}&fq={{fq}}:{{val}}{{/eq}}{{/each}}{{#each query.sort}}{{#eq sort this}}{{else}}&sort={{var}} {{order}}{{/eq}}{{/each}}{{/inline}}
+{{#*inline "htmHeadBaseModelPage"}}{{> "htmTitleBaseModelPage"}}{{> "htmMetaBaseModelPage"}}{{> "htmStyleBaseModelPage"}}{{> "htmScriptsBaseModelPage"}}{{/inline}}
+{{#*inline "htmBodyBaseModelPageCount0"}}
+		<h1>
+			<a href="{{pageUri}}" class="w3-bar-item w3-btn w3-center w3-block w3- w3-hover-">
+				{{#if contextIconCssClasses}}
+					<i class="contextIconCssClasses site-menu-icon "></i>
+				{{/if}}
+				<span class=""></span>
+			</a>
+		</h1>
+		<h2>
+			<span class="w3-bar-item w3-padding w3-center w3-block w3-">
+				{{#if contextIconCssClasses}}
+					<i class="contextIconCssClasses + " site-menu-icon "></i>
+				{{/if}}
+				<span class=""></span>
+			</span>
+		</h2>
+{{/inline}}
+{{#*inline "htmBodyBaseModelPage"}}
+	{{#eq baseModelCount int0}}{{#block "htmBodyCount0"}}{{/block}}
+	{{else}}
+		{{#eq baseModelCount int1}}
+			{{#eq params.query.q "*:*"}}
+				{{#with listBaseModel_[0]}}
+					{{#if pageH1}}
+		<h1>
+			<a href="{{pageUri}}" class="w3-bar-item w3-btn w3-center w3-block w3- w3-hover-">
+			{{#if contextIconCssClasses}}
+				<i class="contextIconCssClasses site-menu-icon "></i>
+			{{/if}}
+				<span class="">{{pageH1}}</span>
+			</a>
+		</h1>
+					{{/if}}
+				{{/with}}
+				{{#if pageH2}}
+		<h2>
+			<span class"w3-bar-item w3-padding w3-center w3-block w3-">
+				<span class="">{{pageH2}}</span>
+			</span>
+		</h2>
+				{{/if}}
+				{{#if pageH3}}
+		<h3>
+			<span class="w3-bar-item w3-padding w3-center w3-block w3-">
+				<span class="">{{pageH3}}</span>
+			</span>
+		</h3>
+				{{/if}}
+			{{else}}
+		<h1>
+			<a href="{{pageUri}}" class="w3-bar-item w3-btn w3-center w3-block w3- w3-hover-">
+				{{#if contextIconCssClasses}}
+				<i class="contextIconCssClasses + " site-menu-icon "></i>
+				{{/if}}
+				<span class="">{{pageH1}}</span>
+			</a>
+		</h1>
+		<div>
+			{{#if pagination.pagePrevious}}
+			<a href="{{pageUri}}?start={{pagination.pagePrevious.start}}&rows={{pagination.rows}}">
+				<i class="fas fa-arrow-square-left "></i>
+			</a>
+			{{else}}
+			<i class="fas fa-arrow-square-left w3-opacity "></i>
+			{{/if}}
+			{{#gte pagination.rowsPrevious pagination.1L}}
+			<a href="{{pageUri}}?start={{pagination.start}}&rows={{ pagination.rowsPrevious }}">
+				<i class="fas fa-minus-square "></i>
+			</a>
+			{{else}}
+			<i class="fas fa-minus-square w3-opacity "></i>
+			{{/gte}}
+			<a href="{{pageUri}}?start={{pagination.start}}&rows={{ pagination.rowsNext }}">
+				<i class="fas fa-plus-square "></i>
+			</a>
+			{{#if pagination.pageNext}}
+			<a href="{{pageUri}}?start={{pagination.pageNext.start}}&rows={{pagination.rows}}">
+				<i class="fas fa-arrow-square-right "></i>
+			</a>
+			{{else}}
+			<i class="fas fa-arrow-square-right w3-opacity "></i>
+			{{/if}}
+			<span>{{ pagination.startNum }} - {{ pagination.endNum }} of {{ pagination.foundNum }}</span>
+		</div>
+						{{> "table1BaseModelPage"}}
+					</div>
+				{{/eq}}
+			{{else}}
+				<h1>
+					<a href="{{pageUri}}" class="w3-bar-item w3-btn w3-center w3-block w3- w3-hover-">
+						{{#if contextIconCssClasses}}
+							<i class="contextIconCssClasses + " site-menu-icon "></i>
+						{{/if}}
+						<span class="">{{pageH1}}</span>
+					</a>
+				</h1>
+				<div class="">
+					<div>
+							{{#if pagination.pagePrevious}}
+								<a href="{{pageUri}}?start={{pagination.pagePrevious.start}}&rows={{pagination.rows}}">
+									<i class="fas fa-arrow-square-left "></i>
+								</a>
+							{{else}}
+								<i class="fas fa-arrow-square-left w3-opacity "></i>
+							{{/if}}
+							{{#gte pagination.rowsPrevious pagination.1L}}
+								<a href="{{pageUri}}?start={{pagination.start}}&rows={{ pagination.rowsPrevious }}">
+									<i class="fas fa-minus-square "></i>
+								</a>
+							{{else}}
+								<i class="fas fa-minus-square w3-opacity "></i>
+							{{/gte}}
+							<a href="{{pageUri}}?start={{pagination.start}}&rows={{ pagination.rowsNext }}">
+								<i class="fas fa-plus-square "></i>
+							</a>
+							{{#if pagination.pageNext}}
+								<a href="{{pageUri}}?start={{pagination.pageNext.start}}&rows={{pagination.rows}}">
+									<i class="fas fa-arrow-square-right "></i>
+								</a>
+							{{else}}
+									<i class="fas fa-arrow-square-right w3-opacity "></i>
+							{{/if}}
+							<span>{{ pagination.startNum }} - {{ pagination.endNum }} of {{ pagination.foundNum }}</span>
+					</div>
+					{{> "table1BaseModelPage"}}
+				</div>
+			{{/eq}}
+		{{/eq}}
+		{{#eq baseModelCount int1}}
+			{{#eq params.query.q "*:*"}}
+				{{#with listBaseModel_[0]}}
+					<div class="">						{{#if pk}}
+							<form action="" id="BaseModelForm" style="display: inline-block; width: 100%; " onsubmit="event.preventDefault(); return false; ">
+								<input
+								name="pk"
+								class="valuePk"
+								type="hidden"
+								value="{{pk}}"
+								/>
+								<input
+									name="focusId"
+									type="hidden"
+									/>
+							</form>
+							{{> "htmFormPageBaseModel"}}
+						{{/if}}
+					</div>
+				{{/with}}
+			{{/eq}}
+		{{/eq}}
+		{{> "htmBodyFormsBaseModelPage"}}
+{{/inline}}
+{{#*inline "table1BaseModelPage"}}
+		<table class="w3-table w3-bordered w3-striped w3-border w3-hoverable ">
+			{{> table2BaseModelPage}}
+		</table>
+{{/inline}}
+{{#*inline "table2BaseModelPage"}}
+		{{> "thead1BaseModelPage"}}
+		{{> "tbody1BaseModelPage"}}
+		{{> "tfoot1BaseModelPage"}}
+	{{/inline}}
+{{#*inline "thead1BaseModelPage"}}
+		<thead class="w3- w3-hover-">
+			{{> thead2BaseModelPage}}
+		</thead>
+	{{/inline}}
+{{#*inline "thead2BaseModelPage"}}
+			<tr>
+			{{#if getColumnCreated}}
+				<th>"created"</th>
+			{{/if}}
+			{{#if getColumnObjectTitle}}
+				<th>""</th>
+			{{/if}}
+			</tr>
+{{/inline}}
+{{#*inline "tbody1BaseModelPage"}}
+		<tbody>
+			{{> tbody2BaseModelPage}}
+		</tbody>
+{{/inline}}
+{{#*inline "tbody2BaseModelPage"}}
+		{{#each listBaseModel_}}
+			<tr>
+				{{#if getColumnCreated}}
+					<td>
+						<a href="{{uri}}">
+							<span>{{strCreated}}</span>
+						</a>
+					} g("td");
+				{{/if}}
+				{{#if getColumnObjectTitle}}
+					<td>
+						<a href="{{uri}}">
+							<span>{{strObjectTitle}}</span>
+						</a>
+					} g("td");
+				{{/if}}
+			</tr>
+		{{/each}}
+{{/inline}}
+{{#*inline "tfoot1BaseModelPage"}}
+		<tfoot class="w3- w3-hover-">
+			{{> tfoot2BaseModelPage}}
+		</tfoot>
+{{/inline}}
+{{#*inline "tfoot2BaseModelPage"}}
+		<tr>
+			{{#if getColumnCreated}}
+				<td>
+				</td>
+			{{/if}}
+			{{#if getColumnObjectTitle}}
+				<td>
+				</td>
+			{{/if}}
+		</tr>
+	{{/inline}}
+{{#*inline "htmBodyFormsBaseModelPage"}}
+		{{#ifContainsAnyRoles roles rolesRequired}}
+			{{#eq baseModelCount int1}}
+				<button
+					class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3- "
+						id="refreshBaseModelGenPage"
+						onclick="patchBaseModelVals( [ {name: 'fq', value: 'pk:' + " + siteRequest_.getRequestPk() + " } ], {}, function() { addGlow($('#refreshBaseModelGenPage')); }, function() { addError($('#refreshBaseModelGenPage')); }); return false; ">
+						<i class="fas fa-sync-alt "></i>
+					refresh 
+				</button>
+			{{/eq}}
+		{{/ifContainsAnyRoles}}
+		{{#ifContainsAnyRoles roles authRolesAdmin}}
+		{{/ifContainsAnyRoles}}
+		{{> "htmSuggestedBaseModelGenPage"}}
+{{/inline}}
+{{#*inline "htmSuggestedBaseModelGenPage"}}
+			{{#ifContainsAnyRoles roles rolesRequired}}
+					<div class="">
+						<button id="refreshBaseModelGenPage{{id}}" class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3- "
+							onclick="patchBaseModelVals([], {}, function() { addGlow($('#refreshBaseModelGenPage{{id}}')); }, function() { addError($('#refreshBaseModelGenPage{{id}}')); }); "
+							>
+							<i class="fas fa-sync-alt "></i>
+							refresh 
+						</button>
+					</div>
+			{{/ifContainsAnyRoles}}
+			<div class="w3-cell-row ">
+				<div class="w3-cell ">
+					<span>
+						search : 
+					</span>
+				</div>
+			</div>
+			<div class="w3-bar ">
+				<input
+					type="text"
+					class="suggestBaseModel w3-input w3-border w3-bar-item "
+					name="suggestBaseModel"
+					id="suggestBaseModel{{id}}"
+					autocomplete="off"
+					oninput="suggestBaseModelObjectSuggest( [ { 'name': 'q', 'value': 'objectSuggest:' + $(this).val() }, { 'name': 'rows', 'value': '10' }, { 'name': 'fl', 'value': 'pk,pageUrlPk,objectTitle' } ], $('#suggestListBaseModel{{id}}'), {{pk}}; "
+					onkeyup="if (event.keyCode === 13) { event.preventDefault(); window.location.href = 'null?q={{query1}}:' + encodeURIComponent(this.value) + '{{fqs}}{{sorts}}&start={{start2}}&rows={{rows1}}"
+				{{#if listBaseModel_}}
+					value="{{query2}}"
+				{{/if}}
+				/>
+				<button
+					class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3- "
+					onclick="window.location.href = 'null?q=&quot;, query1, &quot;:' + encodeURIComponent(this.previousElementSibling.value) + '&quot;, fqs, sorts, &quot;&start=&quot;, start2, &quot;&rows=&quot;, rows1, &quot;'; "
+					>
+					<i class="fas fa-search "></i>
+				</button>
+			<div>
+			<div class="w3-cell-row ">
+				<div class="w3-cell w3-left-align w3-cell-top ">
+					<ul class="w3-ul w3-hoverable " id="suggestListBaseModel{{id}}">
+					</ul>
+				</div>
+			</div>
+			<div class="">
+				<a href="" class="">
+					see 
+				</a>
+			</div>
+{{/inline}}
+{{> PageLayout}}
+
+{{#*inline "htmPk"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			{{#eq 'Page' classApiMethodMethod}}
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label>primary key</label>
+						</div>
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span class="{{varBaseModel}}{{pk}}Pk ">{{strPk}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/eq}}
+		</div>
+{{/inline}}
+
+{{#*inline "inputPk"}}
+		<span class=", "varBaseModel{{pk}}Pk ">{{htmPk}}</span>
+{{/inline}}
+
+{{#*inline "htmInheritPk"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelInheritPk">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputInheritPk"}}
+							</div>
+								{{#eq 'Page' classApiMethodMethod}}
+									<div class="w3-cell w3-left-align w3-cell-top ">
+										<button
+												tabindex="-1"
+												class="w3-btn w3-round w3-border w3-border-black w3-ripple w3-padding w3-bar-item w3- "
+												onclick="removeGlow($('#{{classApiMethodMethod}}_inheritPk')); $('#{{classApiMethodMethod}}_inheritPk').val(null); patchBaseModelVal([{ name: 'fq', value: 'pk:' + $('#BaseModelForm :input[name=pk]').val() }], 'setInheritPk', null, function() { addGlow($('#{{classApiMethodMethod}}_inheritPk')); }, function() { addError($('#{{classApiMethodMethod}}_inheritPk')); }); "
+												>
+											<i class="far fa-eraser "></i>
+										</button>
+									</div>
+								{{/eq}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputInheritPk"}}
+			<input
+				type="text"
+				id="{{classApiMethodMethod}}_inheritPk"
+				{{#eq "Page" classApiMethodMethod}}
+					class="setInheritPk classBaseModel inputBaseModel{{pk}}InheritPk w3-input w3-border 
+					name="setInheritPk"
+				{{else}}
+				{{#eq "PATCH" classApiMethodMethod}}
+					class="setInheritPk classBaseModel inputBaseModel{{pk}}InheritPk w3-input w3-border 
+					name="setInheritPk"
+				{{else}}
+					class="valueInheritPk w3-input w3-border classBaseModel inputBaseModel{{pk}}InheritPk w3-input w3-border "
+					name="inheritPk"
+				{{/eq}}
+				{{/eq}}
+				{{#eq "Page" classApiMethodMethod}}
+					onclick="removeGlow($(this)); "
+					onchange="patchBaseModelVal([{ name: 'fq', value: 'pk:{{pk}}' }], 'setInheritPk', $(this).val(), function() { addGlow($('#{{classApiMethodMethod}}_inheritPk')); }, function() { addError($('#{{classApiMethodMethod}}_inheritPk')); }); "
+				{{/eq}}
+				value="{{InheritPk}}">
+			/>
+
+{{/inline}}
+
+{{#*inline "htmCreated"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelCreated">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label for="{{classApiMethodMethod}}_created">created</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputCreated"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputCreated"}}
+		<span class=", "varBaseModel{{pk}}Created ">{{htmCreated}}</span>
+{{/inline}}
+
+{{#*inline "htmModified"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			{{#eq 'Page' classApiMethodMethod}}
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label>modified</label>
+						</div>
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span class="{{varBaseModel}}{{pk}}Modified ">{{strModified}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/eq}}
+		</div>
+{{/inline}}
+
+{{#*inline "inputModified"}}
+		<span class=", "varBaseModel{{pk}}Modified ">{{htmModified}}</span>
+{{/inline}}
+
+{{#*inline "htmArchived"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelArchived">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label for="{{classApiMethodMethod}}_archived">archived</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputArchived"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputArchived"}}
+			{{#eq 'Page' classApiMethodMethod}}
+				<input
+					type="checkbox"
+					id="{{classApiMethodMethod}}_archived"
+					value="true"
+			{{else}}
+				<select
+					id="{{classApiMethodMethod}}_archived"
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				class="setArchived classBaseModel inputBaseModel{{pk}}Archived w3-input w3-border "
+				name="setArchived"
+			{{else}}
+				{{#eq 'Page' classApiMethodMethod}}
+					class="setArchived classBaseModel inputBaseModel{{pk}}Archived w3-input w3-border "
+					name="setArchived"
+				{{else}}
+					class="valueArchived classBaseModel inputBaseModel{{pk}}Archived w3-input w3-border "
+					name="setArchived"
+				{{/eq}}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				onchange="patchBaseModelVal([{ name: 'fq', value: 'pk:{{pk}}' }], 'setArchived', $(this).prop('checked'), function() { addGlow($('#{{classApiMethodMethod}}_archived')); }, function() { addError($('#{{classApiMethodMethod}}_archived')); }); "
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				{{#if archived}}
+					checked="checked"
+				{{/if}}
+				>
+			{{else}}
+				>
+				<option value="" selected="selected"></option>
+				<option value="true">true</option>
+				<option value="false">false</option>
+				</select>
+			{{/eq}}
+
+{{/inline}}
+
+{{#*inline "htmDeleted"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelDeleted">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label for="{{classApiMethodMethod}}_deleted">deleted</label>
+						</div>
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputDeleted"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputDeleted"}}
+			{{#eq 'Page' classApiMethodMethod}}
+				<input
+					type="checkbox"
+					id="{{classApiMethodMethod}}_deleted"
+					value="true"
+			{{else}}
+				<select
+					id="{{classApiMethodMethod}}_deleted"
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				class="setDeleted classBaseModel inputBaseModel{{pk}}Deleted w3-input w3-border "
+				name="setDeleted"
+			{{else}}
+				{{#eq 'Page' classApiMethodMethod}}
+					class="setDeleted classBaseModel inputBaseModel{{pk}}Deleted w3-input w3-border "
+					name="setDeleted"
+				{{else}}
+					class="valueDeleted classBaseModel inputBaseModel{{pk}}Deleted w3-input w3-border "
+					name="setDeleted"
+				{{/eq}}
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				onchange="patchBaseModelVal([{ name: 'fq', value: 'pk:{{pk}}' }], 'setDeleted', $(this).prop('checked'), function() { addGlow($('#{{classApiMethodMethod}}_deleted')); }, function() { addError($('#{{classApiMethodMethod}}_deleted')); }); "
+			{{/eq}}
+			{{#eq 'Page' classApiMethodMethod}}
+				{{#if deleted}}
+					checked="checked"
+				{{/if}}
+				>
+			{{else}}
+				>
+				<option value="" selected="selected"></option>
+				<option value="true">true</option>
+				<option value="false">false</option>
+				</select>
+			{{/eq}}
+
+{{/inline}}
+
+{{#*inline "htmSessionId"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelSessionId">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputSessionId"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputSessionId"}}
+		<span class=", "varBaseModel{{pk}}SessionId ">{{htmSessionId}}</span>
+{{/inline}}
+
+{{#*inline "htmUserId"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelUserId">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputUserId"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputUserId"}}
+		<span class=", "varBaseModel{{pk}}UserId ">{{htmUserId}}</span>
+{{/inline}}
+
+{{#*inline "htmUserKey"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			<div class="w3-padding ">
+				<div id="suggest{{classApiMethodMethod}}BaseModelUserKey">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-padding ">
+							<div class="w3-cell ">
+								{{> "inputUserKey"}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{{/inline}}
+
+{{#*inline "inputUserKey"}}
+		<span class=", "varBaseModel{{pk}}UserKey ">{{htmUserKey}}</span>
+{{/inline}}
+
+{{#*inline "htmObjectTitle"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			{{#eq 'Page' classApiMethodMethod}}
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span class="{{varBaseModel}}{{pk}}ObjectTitle ">{{strObjectTitle}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/eq}}
+		</div>
+{{/inline}}
+
+{{#*inline "inputObjectTitle"}}
+{{/inline}}
+
+{{#*inline "htmObjectId"}}
+		<div class="w3-cell w3-cell-top w3-center w3-mobile ">
+			{{#eq 'Page' classApiMethodMethod}}
+				<div class="w3-padding ">
+					<div class="w3-card ">
+						<div class="w3-cell-row w3-">
+							<label>ID</label>
+						</div>
+						<div class="w3-cell-row  ">
+							<div class="w3-cell ">
+								<div class="w3-rest ">
+									<span class="{{varBaseModel}}{{pk}}ObjectId ">{{strObjectId}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/eq}}
+		</div>
+{{/inline}}
+
+{{#*inline "inputObjectId"}}
+{{/inline}}
